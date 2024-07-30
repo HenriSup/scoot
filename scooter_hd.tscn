@@ -1,0 +1,124 @@
+[gd_scene load_steps=13 format=3 uid="uid://djthcmbc6tp4k"]
+
+[ext_resource type="Script" path="res://ScooterRigidBody.gd" id="1_g24w0"]
+[ext_resource type="Texture2D" uid="uid://bi1l5jlogrfah" path="res://Assets/Sprites/Scoot/scootHD/chassis2.png" id="2_3bptq"]
+[ext_resource type="Texture2D" uid="uid://cr2ynq0b7yrfy" path="res://Assets/Sprites/Scoot/scootHD/ScootCompletTemplate.png" id="3_1fas0"]
+[ext_resource type="Texture2D" uid="uid://ba1pq4v1804i5" path="res://Assets/Sprites/Scoot/scootHD/RoueSOLO2.png" id="4_kq3g5"]
+[ext_resource type="Texture2D" uid="uid://ca8froqbeticq" path="res://Assets/Sprites/Scoot/character-sheet.png" id="5_4hgg4"]
+[ext_resource type="Texture2D" uid="uid://cq3sq2v0l11m6" path="res://Assets/Sprites/Background/GridTexture.png" id="6_ks4tn"]
+[ext_resource type="Script" path="res://Character.gd" id="6_vl7w8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lh7kb"]
+size = Vector2(1123, 472)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rs4b2"]
+radius = 195.243
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uop3"]
+atlas = ExtResource("5_4hgg4")
+region = Rect2(0, 0, 75, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbdi1"]
+atlas = ExtResource("5_4hgg4")
+region = Rect2(75, 0, 75, 75)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_12p8y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6uop3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbdi1")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ScooterRigidBody" type="RigidBody2D" parent="." node_paths=PackedStringArray("wheels")]
+mass = 10.0
+gravity_scale = 1.2
+script = ExtResource("1_g24w0")
+wheels = [NodePath("FrontWheelPinJoint2D/FrontWheel"), NodePath("BackWheelPinJoint2D2/BackWheel")]
+
+[node name="Sprite2D" type="Sprite2D" parent="ScooterRigidBody"]
+texture = ExtResource("2_3bptq")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ScooterRigidBody"]
+visible = false
+show_behind_parent = true
+z_index = -1
+texture = ExtResource("3_1fas0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScooterRigidBody"]
+position = Vector2(-52, 64)
+shape = SubResource("RectangleShape2D_lh7kb")
+
+[node name="FrontWheelPinJoint2D" type="PinJoint2D" parent="ScooterRigidBody"]
+position = Vector2(469, 246)
+node_a = NodePath("..")
+node_b = NodePath("FrontWheel")
+softness = 1.0
+
+[node name="FrontWheel" type="RigidBody2D" parent="ScooterRigidBody/FrontWheelPinJoint2D"]
+mass = 4.0
+gravity_scale = 1.2
+
+[node name="Sprite2D" type="Sprite2D" parent="ScooterRigidBody/FrontWheelPinJoint2D/FrontWheel"]
+z_index = -1
+texture = ExtResource("4_kq3g5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScooterRigidBody/FrontWheelPinJoint2D/FrontWheel"]
+shape = SubResource("CircleShape2D_rs4b2")
+
+[node name="BackWheelPinJoint2D2" type="PinJoint2D" parent="ScooterRigidBody"]
+position = Vector2(-385, 280)
+node_a = NodePath("..")
+node_b = NodePath("BackWheel")
+softness = 1.0
+
+[node name="BackWheel" type="RigidBody2D" parent="ScooterRigidBody/BackWheelPinJoint2D2"]
+mass = 4.0
+gravity_scale = 1.2
+
+[node name="Sprite2D" type="Sprite2D" parent="ScooterRigidBody/BackWheelPinJoint2D2/BackWheel"]
+z_index = -1
+texture = ExtResource("4_kq3g5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScooterRigidBody/BackWheelPinJoint2D2/BackWheel"]
+shape = SubResource("CircleShape2D_rs4b2")
+
+[node name="Camera2D" type="Camera2D" parent="ScooterRigidBody"]
+zoom = Vector2(0.3, 0.3)
+
+[node name="Character" type="AnimatedSprite2D" parent="ScooterRigidBody"]
+position = Vector2(-17, -144)
+scale = Vector2(15, 15)
+sprite_frames = SubResource("SpriteFrames_12p8y")
+script = ExtResource("6_vl7w8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-768, 534)
+scale = Vector2(6, 6)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-30.1667, -14)
+polygon = PackedVector2Array(-213, 52, -196, 78, -166, 88, -115, 91, -92, 88, -73, 88, -56, 86, 2, 86, 40, 86, 61, 83, 106, 71, 151, 70, 256, 23, 270, 65, 550, 85, 721, 51, 834, 67, 972, 65, 1633, 64, 1638.67, 62.6667, 1643, 62.5, 1649, 64.1667, 1678, 63.6667, 1680.67, 61.8333, 1685.33, 61.6667, 1690.33, 63.6667, 1927.37, 63.4107, 1928, 63, 1930, 63, 1931, 64, 1934.43, 63.9819, 1936, 63, 1938, 63, 1939.69, 63.9541, 1982.11, 63.7296, 1983, 63, 1984, 63, 1985, 64, 3227.17, -16.6667, 3819.17, -280.667, 4760.67, -890.667, 5246, -1590.5, 5635.17, 28.6667, 4845.83, 105, 4075.67, 187, 3068.67, 141.833, 679, 140, -237, 156, -237, 9)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
+color = Color(0.241156, 0.241156, 0.241156, 1)
+polygon = PackedVector2Array(-213, 52, -196, 78, -166, 88, -115, 91, -92, 88, -73, 88, -56, 86, 2, 86, 40, 86, 61, 83, 106, 71, 151, 70, 256, 23, 270, 65, 550, 85, 721, 51, 834, 67, 972, 65, 1633, 64, 1638.67, 62.6667, 1643, 62.5, 1649, 64.1667, 1678, 63.6667, 1680.67, 61.8333, 1685.33, 61.6667, 1690.33, 63.6667, 1927.37, 63.4107, 1928, 63, 1930, 63, 1931, 64, 1934.43, 63.9819, 1936, 63, 1938, 63, 1939.69, 63.9541, 1982.11, 63.7296, 1983, 63, 1984, 63, 1985, 64, 3227.17, -16.6667, 3819.17, -280.667, 4760.67, -890.667, 5246, -1590.5, 5635.17, 28.6667, 4845.83, 105, 4075.67, 187, 3068.67, 141.833, 679, 140, -237, 156, -237, 9)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0.516507, 0.524662, 0.607843)
+z_index = -7
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(19518, -5217)
+scale = Vector2(3, 3)
+texture = ExtResource("6_ks4tn")
+region_enabled = true
+region_rect = Rect2(0, 0, 20000, 7000)

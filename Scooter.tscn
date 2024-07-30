@@ -1,67 +1,82 @@
-[gd_scene load_steps=7 format=3 uid="uid://dh8e0dtxfor4t"]
+[gd_scene load_steps=8 format=3 uid="uid://dh8e0dtxfor4t"]
 
 [ext_resource type="Script" path="res://Scooter.gd" id="1_41url"]
 [ext_resource type="Texture2D" uid="uid://cgxlssotbtj1a" path="res://Assets/Sprites/Scoot/Scooter.png" id="1_7800a"]
 [ext_resource type="Texture2D" uid="uid://6lrcok4uc88a" path="res://Assets/Sprites/Scoot/wheel.png" id="2_8rrx1"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_wmmj6"]
-radius = 7.07107
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_xpbts"]
-radius = 7.07107
+[ext_resource type="Script" path="res://ScooterRigidBody.gd" id="2_73xos"]
+[ext_resource type="Texture2D" uid="uid://djnhy8ptyg7en" path="res://Assets/Sprites/Scoot/character.png" id="5_opn13"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r4urr"]
 size = Vector2(54, 19)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wmmj6"]
+radius = 7.07107
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_41url")
 metadata/_edit_horizontal_guides_ = [9.0]
 
-[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
-position = Vector2(-15, 19)
-node_a = NodePath("../ScooterRigidBody")
-node_b = NodePath("../ScooterRigidBody/BackWheel")
-length = 1.0
-stiffness = 55.5
-damping = 16.0
-
-[node name="ScooterRigidBody" type="RigidBody2D" parent="."]
-gravity_scale = 0.0
+[node name="ScooterRigidBody" type="RigidBody2D" parent="." node_paths=PackedStringArray("wheels")]
+mass = 5.0
+gravity_scale = 0.6
+script = ExtResource("2_73xos")
+wheels = [NodePath("FrontWheelPinJoint2D/FrontWheel"), NodePath("BackWheelPinJoint2D2/BackWheel")]
 
 [node name="Sprite2D" type="Sprite2D" parent="ScooterRigidBody"]
 texture = ExtResource("1_7800a")
 flip_h = true
 
-[node name="FrontWheel" type="RigidBody2D" parent="ScooterRigidBody"]
-position = Vector2(16, 19)
-
-[node name="Sprite2D" type="Sprite2D" parent="ScooterRigidBody/FrontWheel"]
-z_index = -1
-texture = ExtResource("2_8rrx1")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ScooterRigidBody/FrontWheel"]
-shape = SubResource("CircleShape2D_wmmj6")
-
-[node name="BackWheel" type="RigidBody2D" parent="ScooterRigidBody"]
-position = Vector2(-15, 19)
-
-[node name="Sprite2D" type="Sprite2D" parent="ScooterRigidBody/BackWheel"]
-z_index = -1
-texture = ExtResource("2_8rrx1")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ScooterRigidBody/BackWheel"]
-shape = SubResource("CircleShape2D_xpbts")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScooterRigidBody"]
 position = Vector2(3, 9.5)
 shape = SubResource("RectangleShape2D_r4urr")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+[node name="FrontWheelPinJoint2D" type="PinJoint2D" parent="ScooterRigidBody"]
+position = Vector2(16, 19)
+node_a = NodePath("..")
+node_b = NodePath("FrontWheel")
+softness = 0.25
+
+[node name="FrontWheel" type="RigidBody2D" parent="ScooterRigidBody/FrontWheelPinJoint2D"]
+mass = 2.5
+gravity_scale = 0.6
+
+[node name="Sprite2D" type="Sprite2D" parent="ScooterRigidBody/FrontWheelPinJoint2D/FrontWheel"]
+z_index = -1
+texture = ExtResource("2_8rrx1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScooterRigidBody/FrontWheelPinJoint2D/FrontWheel"]
+shape = SubResource("CircleShape2D_wmmj6")
+
+[node name="BackWheelPinJoint2D2" type="PinJoint2D" parent="ScooterRigidBody"]
+position = Vector2(-15, 19)
+node_a = NodePath("..")
+node_b = NodePath("BackWheel")
+softness = 0.25
+
+[node name="BackWheel" type="RigidBody2D" parent="ScooterRigidBody/BackWheelPinJoint2D2"]
+mass = 2.5
+gravity_scale = 0.6
+
+[node name="Sprite2D" type="Sprite2D" parent="ScooterRigidBody/BackWheelPinJoint2D2/BackWheel"]
+z_index = -1
+texture = ExtResource("2_8rrx1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScooterRigidBody/BackWheelPinJoint2D2/BackWheel"]
+shape = SubResource("CircleShape2D_wmmj6")
+
+[node name="Camera2D" type="Camera2D" parent="ScooterRigidBody"]
+zoom = Vector2(3, 3)
+
+[node name="Character" type="Sprite2D" parent="ScooterRigidBody"]
+position = Vector2(0, -10)
+texture = ExtResource("5_opn13")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-213, 52, -196, 78, -166, 88, -115, 91, -94, 74, -73, 88, -56, 86, 2, 86, 40, 86, 61, 83, 97, 66, 151, 70, 259, -22, 259, 36, 248, 155, -237, 156, -237, 9)
+position = Vector2(-30, -14)
+polygon = PackedVector2Array(-213, 52, -196, 78, -166, 88, -115, 91, -92, 88, -73, 88, -56, 86, 2, 86, 40, 86, 61, 83, 106, 71, 151, 70, 256, 23, 270, 65, 550, 85, 721, 51, 834, 67, 972, 65, 1633, 64, 1642, 59, 1651, 64, 1685.38, 63.9267, 1690, 59, 1697.17, 63.9015, 1927.37, 63.4107, 1928, 63, 1930, 63, 1931, 64, 1934.43, 63.9819, 1936, 63, 1938, 63, 1939.69, 63.9541, 1982.11, 63.7296, 1983, 63, 1984, 63, 1985, 64, 2120, 63, 2145, 146, 679, 140, -237, 156, -237, 9)
 
-[node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="."]
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
+color = Color(0.241156, 0.241156, 0.241156, 1)
+polygon = PackedVector2Array(-213, 52, -196, 78, -166, 88, -115, 91, -92, 88, -73, 88, -56, 86, 2, 86, 40, 86, 61, 83, 106, 71, 151, 70, 256, 23, 270, 65, 550, 85, 721, 51, 834, 67, 972, 65, 1633, 64, 1642, 59, 1651, 64, 1685.38, 63.9267, 1690, 59, 1697.17, 63.9015, 1927.37, 63.4107, 1928, 63, 1930, 63, 1931, 64, 1934.43, 63.9819, 1936, 63, 1938, 63, 1939.69, 63.9541, 1982.11, 63.7296, 1983, 63, 1984, 63, 1985, 64, 2120, 63, 2145, 146, 679, 140, -237, 156, -237, 9)

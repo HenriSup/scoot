@@ -1,4 +1,4 @@
-extends Node2D
+extends AnimatedSprite2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -7,6 +7,9 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	if Input.is_action_just_pressed("Reset") :
-		get_tree().reload_current_scene()
+func _process(delta):
+	if Input.is_action_pressed("mouth"):
+		frame=1
+	else:
+		frame=0
+	pass
