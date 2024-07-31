@@ -1,18 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://djthcmbc6tp4k"]
+[gd_scene load_steps=18 format=3 uid="uid://djthcmbc6tp4k"]
 
 [ext_resource type="Script" path="res://ScooterRigidBody.gd" id="1_g24w0"]
 [ext_resource type="Texture2D" uid="uid://bi1l5jlogrfah" path="res://Assets/Sprites/Scoot/scootHD/chassis2.png" id="2_3bptq"]
 [ext_resource type="Texture2D" uid="uid://cr2ynq0b7yrfy" path="res://Assets/Sprites/Scoot/scootHD/ScootCompletTemplate.png" id="3_1fas0"]
+[ext_resource type="Texture2D" uid="uid://bg6rb68pw3w2d" path="res://Assets/Sprites/Scoot/scootHD/Fourche.png" id="3_52v0p"]
 [ext_resource type="Texture2D" uid="uid://ba1pq4v1804i5" path="res://Assets/Sprites/Scoot/scootHD/RoueSOLO2.png" id="4_kq3g5"]
+[ext_resource type="Texture2D" uid="uid://wlyr4t4ed2uq" path="res://Assets/Sprites/Scoot/scootHD/Garde boue avant.png" id="4_veh10"]
 [ext_resource type="Texture2D" uid="uid://ca8froqbeticq" path="res://Assets/Sprites/Scoot/character-sheet.png" id="5_4hgg4"]
+[ext_resource type="Texture2D" uid="uid://d225mba7ceo3y" path="res://Assets/Sprites/Scoot/scootHD/GuidonPhare.png" id="5_s46ti"]
 [ext_resource type="Texture2D" uid="uid://cq3sq2v0l11m6" path="res://Assets/Sprites/Background/GridTexture.png" id="6_ks4tn"]
+[ext_resource type="Texture2D" uid="uid://b1jptgckofbpn" path="res://Assets/Sprites/Scoot/scootHD/Pot d'échappement.png" id="6_vd1dj"]
 [ext_resource type="Script" path="res://Character.gd" id="6_vl7w8"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lh7kb"]
-size = Vector2(1123, 472)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_rs4b2"]
-radius = 195.243
+[ext_resource type="Texture2D" uid="uid://ck4ruf5vasjmk" path="res://Assets/Sprites/Scoot/scootHD/Suspension arriere.png" id="9_cmd1d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6uop3"]
 atlas = ExtResource("5_4hgg4")
@@ -36,6 +35,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lh7kb"]
+size = Vector2(1123, 472)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rs4b2"]
+radius = 195.243
+
 [node name="Node2D" type="Node2D"]
 
 [node name="ScooterRigidBody" type="RigidBody2D" parent="." node_paths=PackedStringArray("wheels")]
@@ -44,10 +49,37 @@ gravity_scale = 1.2
 script = ExtResource("1_g24w0")
 wheels = [NodePath("FrontWheelPinJoint2D/FrontWheel"), NodePath("BackWheelPinJoint2D2/BackWheel")]
 
-[node name="Sprite2D" type="Sprite2D" parent="ScooterRigidBody"]
+[node name="SpriteChassis" type="Sprite2D" parent="ScooterRigidBody"]
 texture = ExtResource("2_3bptq")
 
-[node name="Sprite2D2" type="Sprite2D" parent="ScooterRigidBody"]
+[node name="Fourche" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis"]
+z_index = -1
+texture = ExtResource("3_52v0p")
+
+[node name="GardeBoue" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis"]
+z_index = 2
+texture = ExtResource("4_veh10")
+
+[node name="GuidonPhare" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis"]
+z_index = 1
+texture = ExtResource("5_s46ti")
+
+[node name="PotEchappement" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis"]
+z_index = -1
+texture = ExtResource("6_vd1dj")
+
+[node name="Character" type="AnimatedSprite2D" parent="ScooterRigidBody/SpriteChassis"]
+z_index = 1
+position = Vector2(-17, -144)
+scale = Vector2(15, 15)
+sprite_frames = SubResource("SpriteFrames_12p8y")
+script = ExtResource("6_vl7w8")
+
+[node name="SuspenssionArriere" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis"]
+z_index = -1
+texture = ExtResource("9_cmd1d")
+
+[node name="SpriteTemplate" type="Sprite2D" parent="ScooterRigidBody"]
 visible = false
 show_behind_parent = true
 z_index = -1
@@ -93,12 +125,8 @@ shape = SubResource("CircleShape2D_rs4b2")
 
 [node name="Camera2D" type="Camera2D" parent="ScooterRigidBody"]
 zoom = Vector2(0.3, 0.3)
-
-[node name="Character" type="AnimatedSprite2D" parent="ScooterRigidBody"]
-position = Vector2(-17, -144)
-scale = Vector2(15, 15)
-sprite_frames = SubResource("SpriteFrames_12p8y")
-script = ExtResource("6_vl7w8")
+position_smoothing_enabled = true
+position_smoothing_speed = 25.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-768, 534)
