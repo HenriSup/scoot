@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://115e4fhvjcvl"]
+
+[ext_resource type="Texture2D" uid="uid://ci5fyt6pgocid" path="res://Assets/Sprites/Scoot/test amortisseur/barre.png" id="1_m8tyl"]
+[ext_resource type="Script" path="res://BarreRigidBody.gd" id="1_nv7qm"]
+[ext_resource type="Texture2D" uid="uid://0tj4ts12utkd" path="res://Assets/Sprites/Scoot/test amortisseur/accordeon.png" id="2_qdtlr"]
+[ext_resource type="Texture2D" uid="uid://by8jeaoql81w4" path="res://Assets/Sprites/Scoot/test amortisseur/receptacleRoue.png" id="3_a53o0"]
+[ext_resource type="Texture2D" uid="uid://c6ebi60bbv304" path="res://Assets/Sprites/Scoot/test amortisseur/Roue.png" id="4_2404w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_73afh"]
+size = Vector2(10, 154)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2hsbj"]
+radius = 28.0101
+
+[node name="DismorphTest" type="Node2D"]
+
+[node name="BarreRigidBody" type="RigidBody2D" parent="."]
+script = ExtResource("1_nv7qm")
+
+[node name="Accorderon" type="Sprite2D" parent="BarreRigidBody"]
+position = Vector2(0, 48)
+texture = ExtResource("2_qdtlr")
+offset = Vector2(0, 29)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BarreRigidBody"]
+position = Vector2(0, 28)
+shape = SubResource("RectangleShape2D_73afh")
+
+[node name="SpriteBarre" type="Sprite2D" parent="BarreRigidBody"]
+position = Vector2(0, -0.25)
+scale = Vector2(1, 0.995049)
+texture = ExtResource("1_m8tyl")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="BarreRigidBody"]
+position = Vector2(0, 100.25)
+scale = Vector2(1, 0.995049)
+node_a = NodePath("..")
+node_b = NodePath("RoueRigidBody")
+softness = 2.28
+
+[node name="SpriteReceptacle" type="Sprite2D" parent="BarreRigidBody/PinJoint2D"]
+texture = ExtResource("3_a53o0")
+
+[node name="RoueRigidBody" type="RigidBody2D" parent="BarreRigidBody/PinJoint2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BarreRigidBody/PinJoint2D/RoueRigidBody"]
+shape = SubResource("CircleShape2D_2hsbj")
+
+[node name="Roue" type="Sprite2D" parent="BarreRigidBody/PinJoint2D/RoueRigidBody"]
+texture = ExtResource("4_2404w")
+
+[node name="PointExterieur" type="Marker2D" parent="BarreRigidBody/PinJoint2D/RoueRigidBody"]
+position = Vector2(0, -0.251248)
+scale = Vector2(1, 1.00498)
+gizmo_extents = 15.0
+
+[node name="Camera2D" type="Camera2D" parent="BarreRigidBody"]
+
+[node name="PointInterieur" type="Marker2D" parent="BarreRigidBody"]
+position = Vector2(0, 48)
+gizmo_extents = 15.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-95, 195, -4, 162, 49, 187, 129, 202, 285, 166, 347, 181, 371, 284, 272, 306, 85, 294, -49, 282, -138, 285, -251, 277, -325, 266, -342, 200, -329, 154, -318, 139, -272, 106, -231, 127, -202, 154, -171, 186, -132, 192)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
+color = Color(0.162066, 0.162066, 0.162066, 1)
+polygon = PackedVector2Array(-95, 195, -4, 162, 49, 187, 129, 202, 285, 166, 347, 181, 371, 284, 272, 306, 85, 294, -49, 282, -138, 285, -251, 277, -325, 266, -342, 200, -329, 154, -318, 139, -272, 106, -231, 127, -202, 154, -171, 186, -132, 192)

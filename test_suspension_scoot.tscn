@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://e8cscslak7gl"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
