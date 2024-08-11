@@ -36,7 +36,11 @@ var mainTargetOriginalPosition:Vector2
 var distance_de_base_inter_exter:float
 
 var offsetPhare:float = 0
-var maxOffsetPhare:float = 30
+var maxOffsetPhare:float = 10
+var mainMaxRotate:float = 20
+var mainPolygon:Polygon2D
+var mainRotate:float = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	spriteChassis = $SpriteChassis
@@ -52,6 +56,7 @@ func _ready():
 	polygonBras=$SpriteChassis/Marcello/BrasDroitPolygones/Bras
 	polygonAvantBras=$SpriteChassis/Marcello/BrasDroitPolygones/AvantBras
 	polygonMain=$SpriteChassis/Marcello/BrasDroitPolygones/Main
+	mainPolygon=$SpriteChassis/Marcello/BrasDroitPolygones/Main
 	polygonBrasInitialOfsset=polygonBras.offset
 	polygonAvantBrasInitialOfsset=polygonAvantBras.offset
 	polygonMainInitialOfsset=polygonMain.offset
@@ -82,12 +87,16 @@ func _process(delta):
 	if Input.is_action_pressed("up"):
 		offsetPhare-=5
 		offsetPhare = clamp(offsetPhare, -maxOffsetPhare , maxOffsetPhare)
+		mainRotate-=6
+		mainRotate = clamp(mainRotate, -mainMaxRotate, mainMaxRotate)
 		for wheel in wheels:
 			if wheel.angular_velocity < maxSpeed:
 				wheel.apply_torque_impulse(speed * delta * 60)
 	if Input.is_action_pressed("down"):
 		offsetPhare+=10
 		offsetPhare = clamp(offsetPhare, -maxOffsetPhare , maxOffsetPhare)
+		mainRotate+=3
+		mainRotate = clamp(mainRotate, -mainMaxRotate, mainMaxRotate)
 		for wheel in wheels:
 			if wheel.angular_velocity > -maxSpeed:
 				wheel.apply_torque_impulse(-speed * delta * 60)
@@ -99,6 +108,7 @@ func _process(delta):
 	print("offsetPhare:",offsetPhare)
 	spriteGuidonPhare.position.x = spriteGuidonPhareInitialPosition.x + offsetPhare*0.3	
 	mainTarget.position.x = mainTargetOriginalPosition.x + offsetPhare
+	mainPolygon.rotation_degrees=mainRotate
 	print("mainTargetPos:",mainTarget.position.x)
 	vibrateParts()
 	scaleAccordeon()
