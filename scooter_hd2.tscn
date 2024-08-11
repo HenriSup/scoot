@@ -1,11 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://cr700bw6m5j65"]
+[gd_scene load_steps=30 format=3 uid="uid://cr700bw6m5j65"]
 
 [ext_resource type="Script" path="res://ScooterRigidBody.gd" id="1_ekt5p"]
 [ext_resource type="Texture2D" uid="uid://b1ckimjgodir3" path="res://Assets/Sprites/Scoot/scootHD/chassis.png" id="2_jp0c1"]
 [ext_resource type="Texture2D" uid="uid://bg6rb68pw3w2d" path="res://Assets/Sprites/Scoot/scootHD/Fourche.png" id="3_7huqg"]
 [ext_resource type="Texture2D" uid="uid://ist27lhwnqpa" path="res://Assets/Sprites/Scoot/scootHD/accorderon.png" id="4_kly5k"]
 [ext_resource type="Texture2D" uid="uid://b2cyiwsw84ixe" path="res://Assets/Sprites/Scoot/scootHD/Marcello/debug marker.png" id="5_5qquv"]
-[ext_resource type="Texture2D" uid="uid://d225mba7ceo3y" path="res://Assets/Sprites/Scoot/scootHD/GuidonPhare.png" id="6_g66xs"]
+[ext_resource type="Texture2D" uid="uid://bb1ud02waexe2" path="res://Assets/Sprites/Scoot/scootHD/GuidonPhare2.png" id="6_odush"]
 [ext_resource type="Texture2D" uid="uid://b1jptgckofbpn" path="res://Assets/Sprites/Scoot/scootHD/Pot d'échappement.png" id="7_lel6x"]
 [ext_resource type="Texture2D" uid="uid://che0ibci42gs" path="res://Assets/Sprites/Scoot/scootHD/Marcello/bras gauche.png" id="8_ffcib"]
 [ext_resource type="Texture2D" uid="uid://c0u36jvphk6p7" path="res://Assets/Sprites/Scoot/scootHD/Marcello/testrig/bras et main complet.png" id="8_ryk6s"]
@@ -26,6 +26,26 @@
 [ext_resource type="Texture2D" uid="uid://dllu3orng8u54" path="res://Assets/Sprites/Scoot/scootHD/disque frein avant 2.png" id="23_yoyom"]
 [ext_resource type="Texture2D" uid="uid://cq3sq2v0l11m6" path="res://Assets/Sprites/Background/GridTexture.png" id="24_64h4e"]
 
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_gggo7"]
+target_nodepath = NodePath("../../GuidonPhare/MainTarget")
+tip_nodepath = NodePath("Bras/AvantBras/Main")
+ccdik_data_chain_length = 2
+joint_data/0/bone_index = 0
+joint_data/0/bone2d_node = NodePath("Bras")
+joint_data/0/rotate_from_joint = false
+joint_data/0/enable_constraint = false
+joint_data/0/editor_draw_gizmo = true
+joint_data/1/bone_index = 1
+joint_data/1/bone2d_node = NodePath("Bras/AvantBras")
+joint_data/1/rotate_from_joint = false
+joint_data/1/enable_constraint = false
+joint_data/1/editor_draw_gizmo = true
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_46es4"]
+enabled = true
+modification_count = 1
+modifications/0 = SubResource("SkeletonModification2DCCDIK_gggo7")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rydwv"]
 size = Vector2(1123, 472)
 
@@ -33,6 +53,7 @@ size = Vector2(1123, 472)
 radius = 195.243
 
 [node name="Node2D" type="Node2D"]
+metadata/_edit_vertical_guides_ = [-337.0]
 
 [node name="ScooterRigidBody" type="RigidBody2D" parent="." node_paths=PackedStringArray("wheels", "spriteCharacterParts")]
 mass = 50.0
@@ -64,8 +85,11 @@ position = Vector2(0.521654, 169.94)
 texture = ExtResource("5_5qquv")
 
 [node name="GuidonPhare" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis"]
-z_index = 1
-texture = ExtResource("6_g66xs")
+z_index = 3
+texture = ExtResource("6_odush")
+
+[node name="MainTarget" type="Node2D" parent="ScooterRigidBody/SpriteChassis/GuidonPhare"]
+position = Vector2(134, -335)
 
 [node name="PotEchappement" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis"]
 z_index = -1
@@ -86,6 +110,7 @@ rotation = -0.460578
 gizmo_extents = 50.0
 
 [node name="Debug" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/PointInterieur"]
+visible = false
 z_index = 2
 texture = ExtResource("5_5qquv")
 
@@ -93,23 +118,28 @@ texture = ExtResource("5_5qquv")
 position = Vector2(2, -105)
 
 [node name="BrasDroitPolygones" type="Node2D" parent="ScooterRigidBody/SpriteChassis/Marcello"]
+position = Vector2(31, 19)
 
 [node name="Bras" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/BrasDroitPolygones"]
 z_index = 2
-position = Vector2(-695, -706)
+position = Vector2(-320, -359)
+rotation = 0.0284544
+scale = Vector2(0.999841, 0.999841)
+offset = Vector2(-406, -366)
 texture = ExtResource("8_ryk6s")
-skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(371.605, 311.728, 400.617, 296.296, 433.333, 302.469, 469.753, 329.63, 498.148, 353.704, 527.161, 375.926, 552.469, 388.272, 583.951, 403.086, 605.556, 411.111, 631.482, 422.222, 643.21, 429.63, 650, 467.284, 648.766, 501.852, 639.506, 529.63, 617.901, 560.494, 591.358, 572.222, 569.136, 575.309, 546.914, 567.901, 521.605, 551.852, 503.086, 541.975, 485.185, 532.099, 463.58, 549.383, 437.037, 520.988, 417.901, 494.444, 391.975, 464.198, 370.37, 439.506, 352.469, 412.963, 338.889, 372.222, 341.975, 347.531, 353.704, 319.753, 430.328, 392.623, 490.164, 442.623, 578.688, 486.066)
 uv = PackedVector2Array(371.605, 311.728, 400.617, 296.296, 433.333, 302.469, 469.753, 329.63, 498.148, 353.704, 527.161, 375.926, 552.469, 388.272, 583.951, 403.086, 605.556, 411.111, 631.482, 422.222, 643.21, 429.63, 650, 467.284, 648.766, 501.852, 639.506, 529.63, 617.901, 560.494, 591.358, 572.222, 569.136, 575.309, 546.914, 567.901, 521.605, 551.852, 503.086, 541.975, 485.185, 532.099, 463.58, 549.383, 437.037, 520.988, 417.901, 494.444, 391.975, 464.198, 370.37, 439.506, 352.469, 412.963, 338.889, 372.222, 341.975, 347.531, 353.704, 319.753, 430.328, 392.623, 490.164, 442.623, 578.688, 486.066)
 polygons = [PackedInt32Array(3, 30, 2), PackedInt32Array(30, 4, 3), PackedInt32Array(30, 5, 4), PackedInt32Array(31, 30, 5), PackedInt32Array(5, 6, 31), PackedInt32Array(30, 1, 2), PackedInt32Array(30, 0, 1), PackedInt32Array(29, 30, 0), PackedInt32Array(28, 29, 30), PackedInt32Array(27, 28, 30), PackedInt32Array(27, 26, 30), PackedInt32Array(30, 25, 26), PackedInt32Array(30, 24, 25), PackedInt32Array(23, 30, 24), PackedInt32Array(31, 23, 30), PackedInt32Array(31, 22, 23), PackedInt32Array(31, 21, 22), PackedInt32Array(7, 31, 6), PackedInt32Array(20, 31, 21), PackedInt32Array(7, 32, 31), PackedInt32Array(8, 32, 7), PackedInt32Array(9, 32, 8), PackedInt32Array(10, 32, 9), PackedInt32Array(11, 32, 10), PackedInt32Array(12, 32, 11), PackedInt32Array(13, 32, 12), PackedInt32Array(14, 32, 13), PackedInt32Array(15, 32, 14), PackedInt32Array(16, 32, 15), PackedInt32Array(17, 32, 16), PackedInt32Array(31, 19, 20), PackedInt32Array(19, 32, 31), PackedInt32Array(18, 32, 19), PackedInt32Array(18, 17, 32)]
-bones = ["Bras", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "Bras/AvantBras", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bras/AvantBras/Bone2D", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+bones = ["Bras", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bras/AvantBras", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bras/AvantBras/Main", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
 internal_vertex_count = 3
 
 [node name="AvantBras" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/BrasDroitPolygones"]
-z_index = 2
-position = Vector2(-866, -739)
+z_index = 3
+position = Vector2(-129.63, -232.549)
+rotation = -0.0236255
+scale = Vector2(0.999801, 0.999801)
+offset = Vector2(-771, -522)
 texture = ExtResource("8_ryk6s")
-skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(708.696, 507.609, 743.478, 452.174, 786.956, 452.174, 861.956, 452.174, 938.044, 458.696, 990.217, 459.783, 1021.74, 465.217, 1023.91, 490.217, 1016.3, 554.348, 1008.7, 580.435, 984.783, 588.043, 939.13, 598.913, 863.044, 609.783, 796.739, 620.652, 730.435, 622.826, 698.913, 556.522, 804.478, 532.09, 931.343, 524.627)
 uv = PackedVector2Array(708.696, 507.609, 743.478, 452.174, 786.956, 452.174, 861.956, 452.174, 938.044, 458.696, 990.217, 459.783, 1021.74, 465.217, 1023.91, 490.217, 1016.3, 554.348, 1008.7, 580.435, 984.783, 588.043, 939.13, 598.913, 863.044, 609.783, 796.739, 620.652, 730.435, 622.826, 700, 558.696, 804.478, 532.09, 931.343, 524.627)
 polygons = [PackedInt32Array(2, 16, 1), PackedInt32Array(1, 0, 16), PackedInt32Array(16, 0, 15), PackedInt32Array(16, 15, 14), PackedInt32Array(16, 14, 13), PackedInt32Array(16, 13, 12), PackedInt32Array(2, 16, 3), PackedInt32Array(4, 17, 5), PackedInt32Array(17, 16, 3, 4), PackedInt32Array(17, 11, 12, 16), PackedInt32Array(11, 10, 17), PackedInt32Array(10, 9, 17), PackedInt32Array(17, 5, 6), PackedInt32Array(17, 6, 7), PackedInt32Array(17, 8, 7), PackedInt32Array(17, 9, 8)]
@@ -117,27 +147,56 @@ bones = ["Bras", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 internal_vertex_count = 2
 
 [node name="Main" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/BrasDroitPolygones"]
-z_index = 1
-position = Vector2(-1048, -725)
+z_index = 3
+position = Vector2(101, -249)
+rotation = -0.0236255
+scale = Vector2(0.999801, 0.999801)
+offset = Vector2(-1184, -496)
 texture = ExtResource("8_ryk6s")
 polygon = PackedVector2Array(1086.49, 504.505, 1143.24, 444.144, 1326.13, 459.459, 1304.5, 627.027, 1129.73, 622.523, 1212.61, 527.928)
 uv = PackedVector2Array(1086.49, 504.505, 1143.24, 444.144, 1326.13, 459.459, 1304.5, 627.027, 1129.73, 622.523, 1209.01, 523.423)
 polygons = [PackedInt32Array(1, 5, 2), PackedInt32Array(5, 2, 3), PackedInt32Array(5, 3, 4), PackedInt32Array(5, 4, 0), PackedInt32Array(5, 0, 1)]
+bones = ["Bras", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Bras/AvantBras", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Bras/AvantBras/Main", PackedFloat32Array(1, 1, 1, 1, 1, 1)]
 internal_vertex_count = 1
 
 [node name="Skeleton2D" type="Skeleton2D" parent="ScooterRigidBody/SpriteChassis/Marcello"]
+modification_stack = SubResource("SkeletonModificationStack2D_46es4")
 
 [node name="Bras" type="Bone2D" parent="ScooterRigidBody/SpriteChassis/Marcello/Skeleton2D"]
-position = Vector2(-286, -336)
-rest = Transform2D(1, 0, 0, 1, -286, -336)
+position = Vector2(-289, -340)
+rotation = 0.00165775
+rest = Transform2D(0.999999, 0.00165775, -0.00165775, 0.999999, -289, -340)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="ScooterRigidBody/SpriteChassis/Marcello/Skeleton2D/Bras"]
+remote_path = NodePath("../../../BrasDroitPolygones/Bras")
 
 [node name="AvantBras" type="Bone2D" parent="ScooterRigidBody/SpriteChassis/Marcello/Skeleton2D/Bras"]
-position = Vector2(189, 135)
-rest = Transform2D(1, 0, 0, 1, 189, 135)
+position = Vector2(194, 123)
+rest = Transform2D(1, 0, 0, 1, 194, 123)
+metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone2D" type="Bone2D" parent="ScooterRigidBody/SpriteChassis/Marcello/Skeleton2D/Bras/AvantBras"]
-position = Vector2(239, -13)
-rest = Transform2D(1, 0, 0, 1, 239, -13)
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="ScooterRigidBody/SpriteChassis/Marcello/Skeleton2D/Bras/AvantBras"]
+position = Vector2(0, -2)
+remote_path = NodePath("../../../../BrasDroitPolygones/AvantBras")
+
+[node name="Main" type="Bone2D" parent="ScooterRigidBody/SpriteChassis/Marcello/Skeleton2D/Bras/AvantBras"]
+position = Vector2(231, -13)
+rest = Transform2D(1, 0, 0, 1, 231, -13)
+auto_calculate_length_and_angle = false
+length = 50.678
+bone_angle = 0.0
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="ScooterRigidBody/SpriteChassis/Marcello/Skeleton2D/Bras/AvantBras/Main"]
+remote_path = NodePath("../../../../../BrasDroitPolygones/Main")
+
+[node name="IKTargets" type="Node2D" parent="ScooterRigidBody/SpriteChassis/Marcello"]
+
+[node name="BrasTarget" type="Node2D" parent="ScooterRigidBody/SpriteChassis/Marcello/IKTargets"]
+position = Vector2(-289, -340)
+
+[node name="AvantBrasTarget" type="Node2D" parent="ScooterRigidBody/SpriteChassis/Marcello/IKTargets"]
+position = Vector2(-95, -217)
 
 [node name="BrasGauche" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello"]
 texture = ExtResource("8_ffcib")
@@ -171,6 +230,7 @@ gizmo_extents = 69.3
 script = ExtResource("15_hy726")
 
 [node name="Sprite2D" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/PointExterieur"]
+visible = false
 z_index = 4
 texture = ExtResource("5_5qquv")
 
@@ -201,6 +261,7 @@ offset = Vector2(-1, -1)
 position = Vector2(0, -20)
 
 [node name="Debug" type="Sprite2D" parent="ScooterRigidBody/DisqueDeFrein/PointEntre"]
+visible = false
 z_index = 3
 texture = ExtResource("5_5qquv")
 

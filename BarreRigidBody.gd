@@ -16,7 +16,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("Reset"):
 		get_tree().reload_current_scene()
 	var distance = pointInter.global_position.distance_to(pointExter.global_position)
-	print("distance: ",distance)
+
 	var y = distance/accordeon.texture.get_size().y
 	var difference = 1+(1-y)
 	$Accorderon.scale=Vector2(difference,y)
