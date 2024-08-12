@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cr700bw6m5j65"]
+[gd_scene load_steps=48 format=3 uid="uid://cr700bw6m5j65"]
 
 [ext_resource type="Script" path="res://ScooterRigidBody.gd" id="1_ekt5p"]
 [ext_resource type="Texture2D" uid="uid://b1ckimjgodir3" path="res://Assets/Sprites/Scoot/scootHD/chassis.png" id="2_jp0c1"]
@@ -9,7 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://b1jptgckofbpn" path="res://Assets/Sprites/Scoot/scootHD/Pot d'échappement.png" id="7_lel6x"]
 [ext_resource type="Texture2D" uid="uid://che0ibci42gs" path="res://Assets/Sprites/Scoot/scootHD/Marcello/bras gauche.png" id="8_ffcib"]
 [ext_resource type="Texture2D" uid="uid://c0u36jvphk6p7" path="res://Assets/Sprites/Scoot/scootHD/Marcello/testrig/bras et main complet.png" id="8_ryk6s"]
+[ext_resource type="Texture2D" uid="uid://dmu1jpt2258jv" path="res://Assets/Sprites/Scoot/scootHD/Marcello/testrig/mange.png" id="9_0vyko"]
 [ext_resource type="Texture2D" uid="uid://cv5j04jnp7eai" path="res://Assets/Sprites/Scoot/scootHD/Marcello/testrig/main noire.png" id="9_54t0c"]
+[ext_resource type="Shader" path="res://mouvementManche.gdshader" id="9_i5e7d"]
 [ext_resource type="Texture2D" uid="uid://dr6oti2x4pv1e" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Jambes droite e tcuisse.png" id="9_kkgmr"]
 [ext_resource type="Texture2D" uid="uid://bmtvohxtgg7ih" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Jambes gauche.png" id="10_cxcxg"]
 [ext_resource type="Texture2D" uid="uid://cvudcghjenfym" path="res://Assets/Sprites/Scoot/scootHD/Marcello/tete.png" id="11_lup6r"]
@@ -20,14 +22,22 @@
 [ext_resource type="Script" path="res://testdemerde.gd" id="15_hy726"]
 [ext_resource type="Shader" path="res://doudounevinbration.gdshader" id="15_yoko4"]
 [ext_resource type="Texture2D" uid="uid://cr2ynq0b7yrfy" path="res://Assets/Sprites/Scoot/scootHD/ScootCompletTemplate.png" id="16_62kdm"]
+[ext_resource type="Texture2D" uid="uid://cmifvcn3xlyj5" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Mouths/Neutral.png" id="16_iiadu"]
+[ext_resource type="Texture2D" uid="uid://cy2cb7mydn1ww" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Mouths/Smile1.png" id="17_omcku"]
 [ext_resource type="Texture2D" uid="uid://ckeetihxlj23i" path="res://Assets/Sprites/Scoot/scootHD/disque frein avant.png" id="17_sol1m"]
+[ext_resource type="Texture2D" uid="uid://drxlj7jywdox7" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Mouths/Smile2.png" id="18_r8f34"]
 [ext_resource type="Texture2D" uid="uid://ba1pq4v1804i5" path="res://Assets/Sprites/Scoot/scootHD/RoueSOLO2.png" id="18_u6lfk"]
+[ext_resource type="Texture2D" uid="uid://b8mgsdks10hk5" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Mouths/Angry.png" id="19_rkf58"]
 [ext_resource type="Texture2D" uid="uid://fs2ngfa7x0ma" path="res://Assets/Sprites/Scoot/scootHD/GardeBoueCentered.png" id="19_v6tnh"]
+[ext_resource type="Texture2D" uid="uid://80pt3eg23kgc" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Mouths/Oh.png" id="20_l3s24"]
 [ext_resource type="Script" path="res://noParentRotate.gd" id="20_mks37"]
 [ext_resource type="Texture2D" uid="uid://bbuigodgcm04n" path="res://Assets/Sprites/Scoot/scootHD/suspension arriere centered.png" id="21_ypju0"]
 [ext_resource type="Script" path="res://SuspenssionArriere.gd" id="22_sln7k"]
 [ext_resource type="Texture2D" uid="uid://dllu3orng8u54" path="res://Assets/Sprites/Scoot/scootHD/disque frein avant 2.png" id="23_yoyom"]
 [ext_resource type="Texture2D" uid="uid://cq3sq2v0l11m6" path="res://Assets/Sprites/Background/GridTexture.png" id="24_64h4e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g2qlr"]
+shader = ExtResource("9_i5e7d")
 
 [sub_resource type="SkeletonModification2DJiggle" id="SkeletonModification2DJiggle_sp5wu"]
 execution_mode = 1
@@ -68,6 +78,29 @@ modifications/1 = SubResource("SkeletonModification2DCCDIK_el6j6")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hpb0"]
 size = Vector2(271, 244)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b3yyf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_iiadu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_omcku")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_r8f34")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_rkf58")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_l3s24")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xdeko"]
 shader = ExtResource("13_c6gqh")
@@ -161,8 +194,8 @@ position = Vector2(31, 19)
 [node name="Bras" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/BrasDroitPolygones"]
 z_index = 2
 position = Vector2(-302.229, -349.491)
-rotation = 0.100639
-scale = Vector2(0.999999, 0.999999)
+rotation = 0.100606
+scale = Vector2(0.999998, 0.999998)
 offset = Vector2(-406, -366)
 texture = ExtResource("8_ryk6s")
 polygon = PackedVector2Array(371.605, 311.728, 400.617, 296.296, 433.333, 302.469, 469.753, 329.63, 498.148, 353.704, 527.161, 375.926, 552.469, 388.272, 583.951, 403.086, 605.556, 411.111, 631.482, 422.222, 643.21, 429.63, 650, 467.284, 648.766, 501.852, 639.506, 529.63, 617.901, 560.494, 591.358, 572.222, 569.136, 575.309, 546.914, 567.901, 521.605, 551.852, 503.086, 541.975, 485.185, 532.099, 463.58, 549.383, 437.037, 520.988, 417.901, 494.444, 391.975, 464.198, 370.37, 439.506, 352.469, 412.963, 338.889, 372.222, 341.975, 347.531, 353.704, 319.753, 430.328, 392.623, 490.164, 442.623, 578.688, 486.066)
@@ -171,10 +204,15 @@ polygons = [PackedInt32Array(3, 30, 2), PackedInt32Array(30, 4, 3), PackedInt32A
 bones = ["Bras", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bras/AvantBras", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bras/AvantBras/Main", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
 internal_vertex_count = 3
 
+[node name="MancheBras" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello/BrasDroitPolygones/Bras"]
+material = SubResource("ShaderMaterial_g2qlr")
+texture = ExtResource("9_0vyko")
+offset = Vector2(0, 58)
+
 [node name="AvantBras" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/BrasDroitPolygones"]
 z_index = 3
-position = Vector2(-132.256, -212.931)
-rotation = -0.106419
+position = Vector2(-132.251, -212.936)
+rotation = -0.106536
 scale = Vector2(0.999999, 0.999999)
 offset = Vector2(-771, -522)
 texture = ExtResource("8_ryk6s")
@@ -186,8 +224,9 @@ internal_vertex_count = 2
 
 [node name="Main" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/BrasDroitPolygones"]
 z_index = 3
-position = Vector2(72.3809, -239.655)
+position = Vector2(72.3825, -239.684)
 rotation = 0.191986
+scale = Vector2(1, 1)
 offset = Vector2(-1158.73, -525.77)
 texture = ExtResource("8_ryk6s")
 polygon = PackedVector2Array(1086.49, 504.505, 1143.24, 444.144, 1326.13, 459.459, 1304.5, 627.027, 1129.73, 622.523, 1212.61, 527.928)
@@ -233,7 +272,6 @@ remote_path = NodePath("../../../../BrasDroitPolygones/Bras")
 [node name="AvantBras" type="Bone2D" parent="ScooterRigidBody/SpriteChassis/Marcello/Skeleton2D/Epaule/Bras"]
 position = Vector2(183.245, 120.75)
 rotation = -0.258642
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 195.027, 118.721)
 metadata/_local_pose_override_enabled_ = true
 
@@ -244,7 +282,6 @@ remote_path = NodePath("../../../../../BrasDroitPolygones/AvantBras")
 [node name="Main" type="Bone2D" parent="ScooterRigidBody/SpriteChassis/Marcello/Skeleton2D/Epaule/Bras/AvantBras"]
 position = Vector2(206.317, -6.83637)
 rotation = -0.622314
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 234.946, -19.6652)
 metadata/_local_pose_override_enabled_ = true
 
@@ -283,6 +320,10 @@ shape = SubResource("RectangleShape2D_2hpb0")
 
 [node name="Tete" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello/RigidBody2D"]
 texture = ExtResource("11_lup6r")
+
+[node name="Bouche" type="AnimatedSprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello/RigidBody2D/Tete"]
+sprite_frames = SubResource("SpriteFrames_b3yyf")
+frame = 3
 
 [node name="RigidBody2D" type="RigidBody2D" parent="ScooterRigidBody/SpriteChassis/Marcello/RigidBody2D/Tete"]
 position = Vector2(-209, -601)
