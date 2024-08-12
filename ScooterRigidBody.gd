@@ -3,7 +3,7 @@ extends RigidBody2D
 @export var wheels:Array[RigidBody2D]
 var speed = 320000
 var maxSpeed = 400
-var rotateForce = 35000
+var rotateForce = 65000
 
 var spriteChassis:Sprite2D
 var spriteGuidonPhare:Sprite2D
@@ -21,7 +21,9 @@ var polygonBrasInitialOfsset:Vector2
 var polygonAvantBras:Polygon2D
 var polygonAvantBrasInitialOfsset:Vector2
 var polygonMain:Polygon2D
+var polygonMain2:Polygon2D
 var polygonMainInitialOfsset:Vector2
+var polygonMain2InitialOfsset:Vector2
 
 var spriteAccordeonInitialOfsset:Vector2
 var testPolygon2D:Polygon2D
@@ -56,10 +58,12 @@ func _ready():
 	polygonBras=$SpriteChassis/Marcello/BrasDroitPolygones/Bras
 	polygonAvantBras=$SpriteChassis/Marcello/BrasDroitPolygones/AvantBras
 	polygonMain=$SpriteChassis/Marcello/BrasDroitPolygones/Main
+	polygonMain2=$SpriteChassis/Marcello/BrasDroitPolygones/Main/Main2
 	mainPolygon=$SpriteChassis/Marcello/BrasDroitPolygones/Main
 	polygonBrasInitialOfsset=polygonBras.offset
 	polygonAvantBrasInitialOfsset=polygonAvantBras.offset
 	polygonMainInitialOfsset=polygonMain.offset
+	polygonMain2InitialOfsset=polygonMain2.offset
 	
 	
 	
@@ -114,7 +118,7 @@ func _process(delta):
 	scaleAccordeon()
 	
 func vibrateParts():
-	var frameVibrationForce = 8
+	var frameVibrationForce = 5
 	var mudgardVibrationForce = 3
 	var frontWheelAngularVelocity = wheels[0].angular_velocity
 	var backWheelAngularVelocity = wheels[1].angular_velocity
@@ -131,6 +135,8 @@ func vibrateParts():
 		polygonBras.offset=polygonBrasInitialOfsset+Vector2(rand1*0.8,rand2*0.8)
 		polygonAvantBras.offset=polygonAvantBrasInitialOfsset+Vector2(rand1*0.8,rand2*0.8)
 		polygonMain.offset=polygonMainInitialOfsset+Vector2(rand1*0.8,rand2*0.8)
+		polygonMain2.offset=polygonMain2InitialOfsset+Vector2(rand1*0.8,rand2*0.8)
+		
 		#mainTarget.position=mainTargetOriginalPosition+(Vector2(rand1*0.8,rand2*0.8))
 		
 		
@@ -154,6 +160,7 @@ func vibrateParts():
 		polygonBras.offset=polygonBrasInitialOfsset
 		polygonAvantBras.offset=polygonAvantBrasInitialOfsset
 		polygonMain.offset=polygonMainInitialOfsset
+		polygonMain2.offset=polygonMain2InitialOfsset
 		#mainTarget.positi
 		#mainTarget.position=mainTargetOriginalPosition
 		
