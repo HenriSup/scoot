@@ -43,7 +43,8 @@ var distance_de_base_inter_exter:float
 
 var offsetPhare:float = 0
 var maxOffsetPhare:float = 10
-var mainMaxRotate:float = 20
+var mainMaxRotate:float = 15
+var mainInitialRotation:float
 var mainPolygon:Polygon2D
 var mainRotate:float = 0
 
@@ -80,7 +81,8 @@ func _ready():
 	
 	mainTarget=$SpriteChassis/GuidonPhare/MainTarget
 	mainTargetOriginalPosition=mainTarget.position
-	
+	mainInitialRotation=$SpriteChassis/Marcello/BrasDroitPolygones/Main.rotation_degrees
+	mainRotate=mainInitialRotation
 	var closestPoint = Geometry2D.get_closest_point_to_segment(pointEntre.global_position,pointInter.global_position,pointExter.global_position)
 	var distance = pointInter.global_position.distance_to(closestPoint)
 	
@@ -99,7 +101,7 @@ func _process(delta):
 		offsetPhare-=5
 		offsetPhare = clamp(offsetPhare, -maxOffsetPhare , maxOffsetPhare)
 		mainRotate-=6
-		mainRotate = clamp(mainRotate, -mainMaxRotate, mainMaxRotate)
+		mainRotate = clamp(mainRotate, -mainMaxRotate+mainInitialRotation, mainMaxRotate+mainInitialRotation)
 		for wheel in wheels:
 			if wheel.angular_velocity < maxSpeed:
 				wheel.apply_torque_impulse(speed * delta * 60)
@@ -107,7 +109,7 @@ func _process(delta):
 		offsetPhare+=10
 		offsetPhare = clamp(offsetPhare, -maxOffsetPhare , maxOffsetPhare)
 		mainRotate+=3
-		mainRotate = clamp(mainRotate, -mainMaxRotate, mainMaxRotate)
+		mainRotate = clamp(mainRotate, -mainMaxRotate+mainInitialRotation, mainMaxRotate+mainInitialRotation)
 		for wheel in wheels:
 			if wheel.angular_velocity > -maxSpeed:
 				wheel.apply_torque_impulse(-speed * delta * 60)
@@ -116,11 +118,11 @@ func _process(delta):
 	if Input.is_action_pressed("right"):
 		apply_force(Vector2(rotateForce,0),$ForceMarker.position)
 	
-	print("offsetPhare:",offsetPhare)
+
 	spriteGuidonPhare.position.x = spriteGuidonPhareInitialPosition.x + offsetPhare*0.3	
 	mainTarget.position.x = mainTargetOriginalPosition.x + offsetPhare
 	mainPolygon.rotation_degrees=mainRotate
-	print("mainTargetPos:",mainTarget.position.x)
+
 	vibrateParts()
 	scaleAccordeon()
 	
@@ -128,7 +130,7 @@ func vibrateParts():
 	var frameVibrationForce = 5
 	var mudgardVibrationForce = 3
 	var frontWheelAngularVelocity = wheels[0].angular_velocity
-	var backWheelAngularVelocity = wheels[1].angular_velocity
+	#var backWheelAngularVelocity = wheels[1].angular_velocity
 	if abs(frontWheelAngularVelocity) > 20 :
 		var rand1 = randf_range(-1*frameVibrationForce,1*frameVibrationForce)
 		var rand2 = randf_range(-1*frameVibrationForce,1*frameVibrationForce)

@@ -1,40 +1,120 @@
-[gd_scene load_steps=48 format=3 uid="uid://cr700bw6m5j65"]
+[gd_scene load_steps=83 format=3 uid="uid://cr700bw6m5j65"]
 
 [ext_resource type="Script" path="res://ScooterRigidBody.gd" id="1_ekt5p"]
 [ext_resource type="Texture2D" uid="uid://b1ckimjgodir3" path="res://Assets/Sprites/Scoot/scootHD/chassis.png" id="2_jp0c1"]
 [ext_resource type="Texture2D" uid="uid://bg6rb68pw3w2d" path="res://Assets/Sprites/Scoot/scootHD/Fourche.png" id="3_7huqg"]
+[ext_resource type="Texture2D" uid="uid://bssrqorcuejfv" path="res://Assets/Sprites/Scoot/scootHD/drapobaton.png" id="3_eesvv"]
 [ext_resource type="Texture2D" uid="uid://ist27lhwnqpa" path="res://Assets/Sprites/Scoot/scootHD/accorderon.png" id="4_kly5k"]
+[ext_resource type="Shader" path="res://drapo.gdshader" id="4_ye2u1"]
 [ext_resource type="Texture2D" uid="uid://b2cyiwsw84ixe" path="res://Assets/Sprites/Scoot/scootHD/Marcello/debug marker.png" id="5_5qquv"]
+[ext_resource type="Texture2D" uid="uid://o33r38ehlwyp" path="res://Assets/Sprites/Scoot/scootHD/drapo.png" id="5_tgiqe"]
 [ext_resource type="Texture2D" uid="uid://bb1ud02waexe2" path="res://Assets/Sprites/Scoot/scootHD/GuidonPhare2.png" id="6_odush"]
 [ext_resource type="Texture2D" uid="uid://b1jptgckofbpn" path="res://Assets/Sprites/Scoot/scootHD/Pot d'échappement.png" id="7_lel6x"]
+[ext_resource type="Texture2D" uid="uid://dncxna2mpfec0" path="res://Assets/Sprites/Scoot/scootHD/FX/SmokeWhite.png" id="8_ckytb"]
 [ext_resource type="Texture2D" uid="uid://che0ibci42gs" path="res://Assets/Sprites/Scoot/scootHD/Marcello/bras gauche.png" id="8_ffcib"]
 [ext_resource type="Texture2D" uid="uid://c0u36jvphk6p7" path="res://Assets/Sprites/Scoot/scootHD/Marcello/testrig/bras et main complet.png" id="8_ryk6s"]
 [ext_resource type="Texture2D" uid="uid://dmu1jpt2258jv" path="res://Assets/Sprites/Scoot/scootHD/Marcello/testrig/mange.png" id="9_0vyko"]
 [ext_resource type="Texture2D" uid="uid://cv5j04jnp7eai" path="res://Assets/Sprites/Scoot/scootHD/Marcello/testrig/main noire.png" id="9_54t0c"]
+[ext_resource type="Texture2D" uid="uid://g0d2ee86ibab" path="res://Assets/Sprites/Scoot/scootHD/FX/SmokeBlack.png" id="9_aae8u"]
 [ext_resource type="Shader" path="res://mouvementManche.gdshader" id="9_i5e7d"]
-[ext_resource type="Texture2D" uid="uid://dr6oti2x4pv1e" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Jambes droite e tcuisse.png" id="9_kkgmr"]
-[ext_resource type="Texture2D" uid="uid://bmtvohxtgg7ih" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Jambes gauche.png" id="10_cxcxg"]
 [ext_resource type="Texture2D" uid="uid://cvudcghjenfym" path="res://Assets/Sprites/Scoot/scootHD/Marcello/tete.png" id="11_lup6r"]
 [ext_resource type="Texture2D" uid="uid://cu68er8rstcww" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Torse.png" id="12_1yp7n"]
 [ext_resource type="Texture2D" uid="uid://jltk0qeqkspb" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Bras droit.png" id="13_bhgmp"]
 [ext_resource type="Shader" path="res://waveflag.gdshader" id="13_c6gqh"]
 [ext_resource type="Texture2D" uid="uid://dpix78gfiwqij" path="res://Assets/Sprites/Scoot/scootHD/Marcello/oreille2.png" id="14_51rrv"]
 [ext_resource type="Script" path="res://testdemerde.gd" id="15_hy726"]
+[ext_resource type="Texture2D" uid="uid://vgm6jssp73ig" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Jambes/jambearriere.png" id="15_ss651"]
 [ext_resource type="Shader" path="res://doudounevinbration.gdshader" id="15_yoko4"]
 [ext_resource type="Texture2D" uid="uid://cr2ynq0b7yrfy" path="res://Assets/Sprites/Scoot/scootHD/ScootCompletTemplate.png" id="16_62kdm"]
 [ext_resource type="Texture2D" uid="uid://cmifvcn3xlyj5" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Mouths/Neutral.png" id="16_iiadu"]
+[ext_resource type="Texture2D" uid="uid://deoe0fu60hvek" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Jambes/shortrriere.png" id="16_txscx"]
+[ext_resource type="Shader" path="res://shortshader0.gdshader" id="16_uopkc"]
+[ext_resource type="Texture2D" uid="uid://brevsjg8hnh4g" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Jambes/jamebAvant.png" id="17_dwjcv"]
 [ext_resource type="Texture2D" uid="uid://cy2cb7mydn1ww" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Mouths/Smile1.png" id="17_omcku"]
 [ext_resource type="Texture2D" uid="uid://ckeetihxlj23i" path="res://Assets/Sprites/Scoot/scootHD/disque frein avant.png" id="17_sol1m"]
+[ext_resource type="Texture2D" uid="uid://b83fsk48758gc" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Jambes/shortavant.png" id="18_7menq"]
 [ext_resource type="Texture2D" uid="uid://drxlj7jywdox7" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Mouths/Smile2.png" id="18_r8f34"]
+[ext_resource type="Texture2D" uid="uid://dhxjpymhh6foh" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Tete/eye1.png" id="18_rshii"]
 [ext_resource type="Texture2D" uid="uid://ba1pq4v1804i5" path="res://Assets/Sprites/Scoot/scootHD/RoueSOLO2.png" id="18_u6lfk"]
+[ext_resource type="Texture2D" uid="uid://cmshq3dd7d2fe" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Tete/eye2.png" id="19_gw2nj"]
+[ext_resource type="Shader" path="res://shortshader.gdshader" id="19_lk584"]
 [ext_resource type="Texture2D" uid="uid://b8mgsdks10hk5" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Mouths/Angry.png" id="19_rkf58"]
 [ext_resource type="Texture2D" uid="uid://fs2ngfa7x0ma" path="res://Assets/Sprites/Scoot/scootHD/GardeBoueCentered.png" id="19_v6tnh"]
+[ext_resource type="Texture2D" uid="uid://wcucqnud2qpa" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Tete/eye3.png" id="20_djlh8"]
 [ext_resource type="Texture2D" uid="uid://80pt3eg23kgc" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Mouths/Oh.png" id="20_l3s24"]
 [ext_resource type="Script" path="res://noParentRotate.gd" id="20_mks37"]
 [ext_resource type="Texture2D" uid="uid://bbuigodgcm04n" path="res://Assets/Sprites/Scoot/scootHD/suspension arriere centered.png" id="21_ypju0"]
 [ext_resource type="Script" path="res://SuspenssionArriere.gd" id="22_sln7k"]
 [ext_resource type="Texture2D" uid="uid://dllu3orng8u54" path="res://Assets/Sprites/Scoot/scootHD/disque frein avant 2.png" id="23_yoyom"]
 [ext_resource type="Texture2D" uid="uid://cq3sq2v0l11m6" path="res://Assets/Sprites/Background/GridTexture.png" id="24_64h4e"]
+[ext_resource type="Shader" path="res://scooter_hd2.gdshader" id="28_k87hq"]
+[ext_resource type="Texture2D" uid="uid://c6u30lep0nfr4" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Tete/hairFront.png" id="29_50yic"]
+[ext_resource type="Shader" path="res://scooter_hdd2.gdshader" id="30_wqrnv"]
+[ext_resource type="Texture2D" uid="uid://be0hpiykw0byc" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Tete/hariback.png" id="31_byotq"]
+[ext_resource type="Texture2D" uid="uid://bap3qtb4diqve" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Mouths/Jubilatin.png" id="33_bk5qu"]
+[ext_resource type="Texture2D" uid="uid://t7ev26woqxo0" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Mouths/lcope.png" id="33_jlyhi"]
+[ext_resource type="AudioStream" uid="uid://bfplfap0xxt8h" path="res://Assets/Audio/Music/Summers Comin Bébé.mp3" id="36_p24ph"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hycbr"]
+shader = ExtResource("4_ye2u1")
+
+[sub_resource type="Gradient" id="Gradient_gf1c3"]
+offsets = PackedFloat32Array(0, 0.972125)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2gsia"]
+gradient = SubResource("Gradient_gf1c3")
+
+[sub_resource type="Curve" id="Curve_hrc4i"]
+resource_local_to_scene = true
+_data = [Vector2(0, 0.161821), 0.0, 10.7807, 0, 0, Vector2(0.031746, 0.58091), 1.13247, 1.13247, 0, 0, Vector2(0.130159, 0.64665), 0.0, 0.0, 0, 0, Vector2(0.930159, 0.786346), -1.2525, -1.2525, 0, 0, Vector2(1, 0.515171), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_w3xhb"]
+curve = SubResource("Curve_hrc4i")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7url4"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+gravity = Vector3(-120, -400, 0)
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_w3xhb")
+color_ramp = SubResource("GradientTexture1D_2gsia")
+anim_offset_max = 0.088
+turbulence_noise_strength = 13.54
+turbulence_noise_scale = 3.511
+turbulence_noise_speed_random = 0.72
+turbulence_influence_min = 0.585
+turbulence_influence_max = 0.585
+turbulence_initial_displacement_max = 64.4
+
+[sub_resource type="Curve" id="Curve_4xox5"]
+resource_local_to_scene = true
+_data = [Vector2(0, 0.2933), 0.0, 10.7807, 0, 0, Vector2(0.031746, 0.58091), 1.13247, 1.13247, 0, 0, Vector2(0.130159, 0.810999), 0.0, 0.0, 0, 0, Vector2(0.91746, 0.843868), -1.2525, -1.2525, 0, 0, Vector2(0.936508, 0.465866), 0.0, 0.0, 0, 0, Vector2(1, 0.252212), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="CurveTexture" id="CurveTexture_uadbm"]
+curve = SubResource("Curve_4xox5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w5hr5"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+initial_velocity_max = 29.24
+angular_velocity_max = 710.87
+gravity = Vector3(-130, -380, 0)
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_uadbm")
+anim_offset_max = 0.088
+turbulence_noise_strength = 13.54
+turbulence_noise_scale = 3.511
+turbulence_noise_speed_random = 0.72
+turbulence_influence_min = 0.585
+turbulence_influence_max = 0.585
+turbulence_initial_displacement_max = 64.4
+collision_mode = 1
+collision_friction = 0.7
+collision_bounce = 0.4
+collision_use_scale = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g2qlr"]
 shader = ExtResource("9_i5e7d")
@@ -76,8 +156,31 @@ modification_count = 2
 modifications/0 = SubResource("SkeletonModification2DJiggle_sp5wu")
 modifications/1 = SubResource("SkeletonModification2DCCDIK_el6j6")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qwkhu"]
+shader = ExtResource("16_uopkc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iv8bk"]
+shader = ExtResource("19_lk584")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hpb0"]
 size = Vector2(271, 244)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nvueq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_rshii")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_gw2nj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_djlh8")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b3yyf"]
 animations = [{
@@ -96,17 +199,86 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("20_l3s24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_bk5qu")
 }],
 "loop": false,
 "name": &"default",
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5xlix"]
+shader = ExtResource("28_k87hq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ilvg"]
+shader = ExtResource("30_wqrnv")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xdeko"]
 shader = ExtResource("13_c6gqh")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_udeai"]
 size = Vector2(152.75, 68.5)
+
+[sub_resource type="Animation" id="Animation_qnpjr"]
+resource_name = "new_animation"
+length = 30.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8.9, 9.6, 10.2, 23.2),
+"transitions": PackedFloat32Array(1, 1, 1, 2, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(0.2, 0.2), Vector2(0.2, 0.2), Vector2(0.2, 0.2), Vector2(0.5, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(13.8, 23.3),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 400)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:stream")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(8.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("36_p24ph")]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("36_p24ph")
+}],
+"times": PackedFloat32Array(9.1)
+}
+tracks/3/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c46sx"]
+_data = {
+"new_animation": SubResource("Animation_qnpjr")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m6muh"]
 size = Vector2(364.25, 472.75)
@@ -128,13 +300,25 @@ mass = 50.0
 gravity_scale = 1.8
 script = ExtResource("1_ekt5p")
 wheels = [NodePath("FrontWheelPinJoint2D/FrontWheel"), NodePath("BackWheelPinJoint2D2/BackWheel")]
-spriteCharacterParts = [NodePath("SpriteChassis/Marcello/BrasGauche"), NodePath("SpriteChassis/Marcello/JambeDroiteEtCuisse"), NodePath("SpriteChassis/Marcello/JambeGauche"), NodePath("SpriteChassis/Marcello/RigidBody2D/Tete"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/Torse"), NodePath("SpriteChassis/Marcello/BrasDroit"), NodePath("SpriteChassis/Marcello/RigidBody2D/Tete/RigidBody2D/Oreille")]
+spriteCharacterParts = [NodePath("SpriteChassis/Marcello/BrasGauche"), NodePath("SpriteChassis/Marcello/JambeArriere"), NodePath("SpriteChassis/Marcello/ShortAvant"), NodePath("SpriteChassis/Marcello/RigidBody2D/Tete"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/Torse"), NodePath("SpriteChassis/Marcello/BrasDroit"), NodePath("SpriteChassis/Marcello/RigidBody2D/Tete/RigidBody2D/Oreille"), NodePath("SpriteChassis/Marcello/JambeAvant"), NodePath("SpriteChassis/Marcello/Shortarriere"), NodePath("SpriteChassis/Marcello/RigidBody2D/Tete/Bouche/Clope")]
 
 [node name="ForceMarker" type="Marker2D" parent="ScooterRigidBody"]
 position = Vector2(-290, -436)
 
 [node name="SpriteChassis" type="Sprite2D" parent="ScooterRigidBody"]
 texture = ExtResource("2_jp0c1")
+
+[node name="DrapeauBaton" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis"]
+visible = false
+z_index = -2
+position = Vector2(-796, -512)
+texture = ExtResource("3_eesvv")
+
+[node name="DrapeauToile" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/DrapeauBaton"]
+z_index = -1
+material = SubResource("ShaderMaterial_hycbr")
+position = Vector2(-2, 56)
+texture = ExtResource("5_tgiqe")
 
 [node name="Fourche" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis"]
 z_index = -1
@@ -150,6 +334,7 @@ offset = Vector2(0, 85)
 position = Vector2(0.521654, 169.94)
 
 [node name="Sprite2D" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Fourche/Accorderon/BoutAccordeon"]
+visible = false
 texture = ExtResource("5_5qquv")
 
 [node name="GuidonPhare" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis"]
@@ -157,7 +342,7 @@ z_index = 3
 texture = ExtResource("6_odush")
 
 [node name="MainTarget" type="Node2D" parent="ScooterRigidBody/SpriteChassis/GuidonPhare"]
-position = Vector2(126, -328)
+position = Vector2(154, -303)
 
 [node name="Poigné Targer" type="Node2D" parent="ScooterRigidBody/SpriteChassis/GuidonPhare"]
 position = Vector2(104, -300)
@@ -165,6 +350,27 @@ position = Vector2(104, -300)
 [node name="PotEchappement" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis"]
 z_index = -1
 texture = ExtResource("7_lel6x")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ScooterRigidBody/SpriteChassis/PotEchappement"]
+visible = false
+z_index = -1
+position = Vector2(-653, 20)
+rotation = -0.00872665
+amount = 700
+process_material = SubResource("ParticleProcessMaterial_7url4")
+texture = ExtResource("8_ckytb")
+lifetime = 3.0
+fixed_fps = 60
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="ScooterRigidBody/SpriteChassis/PotEchappement/GPUParticles2D"]
+visible = false
+z_index = -2
+scale = Vector2(1.1, 1.1)
+amount = 700
+process_material = SubResource("ParticleProcessMaterial_w5hr5")
+texture = ExtResource("9_aae8u")
+lifetime = 3.0
+fixed_fps = 60
 
 [node name="RayCast2D" type="RayCast2D" parent="ScooterRigidBody/SpriteChassis"]
 z_index = 11
@@ -193,9 +399,9 @@ position = Vector2(31, 19)
 
 [node name="Bras" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/BrasDroitPolygones"]
 z_index = 2
-position = Vector2(-302.229, -349.491)
-rotation = 0.100606
-scale = Vector2(0.999998, 0.999998)
+position = Vector2(-302.194, -349.415)
+rotation = 0.0587316
+scale = Vector2(0.999999, 0.999999)
 offset = Vector2(-406, -366)
 texture = ExtResource("8_ryk6s")
 polygon = PackedVector2Array(371.605, 311.728, 400.617, 296.296, 433.333, 302.469, 469.753, 329.63, 498.148, 353.704, 527.161, 375.926, 552.469, 388.272, 583.951, 403.086, 605.556, 411.111, 631.482, 422.222, 643.21, 429.63, 650, 467.284, 648.766, 501.852, 639.506, 529.63, 617.901, 560.494, 591.358, 572.222, 569.136, 575.309, 546.914, 567.901, 521.605, 551.852, 503.086, 541.975, 485.185, 532.099, 463.58, 549.383, 437.037, 520.988, 417.901, 494.444, 391.975, 464.198, 370.37, 439.506, 352.469, 412.963, 338.889, 372.222, 341.975, 347.531, 353.704, 319.753, 430.328, 392.623, 490.164, 442.623, 578.688, 486.066)
@@ -211,9 +417,9 @@ offset = Vector2(0, 58)
 
 [node name="AvantBras" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/BrasDroitPolygones"]
 z_index = 3
-position = Vector2(-132.251, -212.936)
-rotation = -0.106536
-scale = Vector2(0.999999, 0.999999)
+position = Vector2(-126.669, -220.092)
+rotation = -0.158972
+scale = Vector2(0.999997, 0.999997)
 offset = Vector2(-771, -522)
 texture = ExtResource("8_ryk6s")
 polygon = PackedVector2Array(708.696, 507.609, 743.478, 452.174, 786.956, 452.174, 861.956, 452.174, 938.044, 458.696, 990.217, 459.783, 1021.74, 465.217, 1023.91, 490.217, 1016.3, 554.348, 1008.7, 580.435, 984.783, 588.043, 939.13, 598.913, 863.044, 609.783, 796.739, 620.652, 730.435, 622.826, 698.913, 556.522, 804.478, 532.09, 931.343, 524.627)
@@ -224,10 +430,10 @@ internal_vertex_count = 2
 
 [node name="Main" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/BrasDroitPolygones"]
 z_index = 3
-position = Vector2(72.3825, -239.684)
-rotation = 0.191986
-scale = Vector2(1, 1)
-offset = Vector2(-1158.73, -525.77)
+position = Vector2(90.3757, -217.868)
+rotation = -0.122173
+scale = Vector2(0.999998, 0.999998)
+offset = Vector2(-1180.77, -556.766)
 texture = ExtResource("8_ryk6s")
 polygon = PackedVector2Array(1086.49, 504.505, 1143.24, 444.144, 1326.13, 459.459, 1304.5, 627.027, 1129.73, 622.523, 1212.61, 527.928)
 uv = PackedVector2Array(1086.49, 504.505, 1143.24, 444.144, 1326.13, 459.459, 1304.5, 627.027, 1129.73, 622.523, 1209.01, 523.423)
@@ -236,10 +442,11 @@ bones = ["Bras", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Bras/AvantBras", PackedF
 internal_vertex_count = 1
 
 [node name="Main2" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/BrasDroitPolygones/Main"]
+visible = false
 z_index = -1
 position = Vector2(0, -0.000610352)
 scale = Vector2(0.999999, 0.999999)
-offset = Vector2(-1158.73, -525.77)
+offset = Vector2(-1158.73, -565.77)
 texture = ExtResource("9_54t0c")
 polygon = PackedVector2Array(1086.49, 504.505, 1143.24, 444.144, 1326.13, 459.459, 1304.5, 627.027, 1129.73, 622.523, 1212.61, 527.928)
 uv = PackedVector2Array(1086.49, 504.505, 1143.24, 444.144, 1326.13, 459.459, 1304.5, 627.027, 1129.73, 622.523, 1209.01, 523.423)
@@ -258,7 +465,6 @@ position = Vector2(-198.478, -385.093)
 rotation = 0.217021
 scale = Vector2(0.999996, 0.999996)
 rest = Transform2D(0.997502, 0.0706359, -0.0706359, 0.997502, -281.241, -391.362)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="Bras" type="Bone2D" parent="ScooterRigidBody/SpriteChassis/Marcello/Skeleton2D/Epaule"]
 position = Vector2(-37.1733, 24.0649)
@@ -280,17 +486,17 @@ position = Vector2(0, -2)
 remote_path = NodePath("../../../../../BrasDroitPolygones/AvantBras")
 
 [node name="Main" type="Bone2D" parent="ScooterRigidBody/SpriteChassis/Marcello/Skeleton2D/Epaule/Bras/AvantBras"]
-position = Vector2(206.317, -6.83637)
-rotation = -0.622314
+position = Vector2(213.956, 34.5541)
+rotation = 1.10161
 rest = Transform2D(1, 0, 0, 1, 234.946, -19.6652)
+auto_calculate_length_and_angle = false
+length = 47.803
+bone_angle = -35.656
 metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="ScooterRigidBody/SpriteChassis/Marcello/Skeleton2D/Epaule/Bras/AvantBras/Main"]
 remote_path = NodePath("../../../../../../BrasDroitPolygones/Main")
 update_rotation = false
-
-[node name="Bone2D" type="Bone2D" parent="ScooterRigidBody/SpriteChassis/Marcello/Skeleton2D/Epaule/Bras/AvantBras"]
-rotation = 0.652753
 
 [node name="IKTargets" type="Node2D" parent="ScooterRigidBody/SpriteChassis/Marcello"]
 
@@ -303,13 +509,22 @@ position = Vector2(-118, -189)
 [node name="BrasGauche" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello"]
 texture = ExtResource("8_ffcib")
 
-[node name="JambeDroiteEtCuisse" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello"]
-texture = ExtResource("9_kkgmr")
-
-[node name="JambeGauche" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello"]
-modulate = Color(0.605274, 0.605274, 0.605274, 1)
+[node name="JambeArriere" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello"]
+modulate = Color(0.625597, 0.625597, 0.625597, 1)
 z_index = -1
-texture = ExtResource("10_cxcxg")
+texture = ExtResource("15_ss651")
+
+[node name="Shortarriere" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello"]
+z_index = -1
+material = SubResource("ShaderMaterial_qwkhu")
+texture = ExtResource("16_txscx")
+
+[node name="JambeAvant" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello"]
+texture = ExtResource("17_dwjcv")
+
+[node name="ShortAvant" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello"]
+material = SubResource("ShaderMaterial_iv8bk")
+texture = ExtResource("18_7menq")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="ScooterRigidBody/SpriteChassis/Marcello"]
 mass = 0.8
@@ -321,17 +536,38 @@ shape = SubResource("RectangleShape2D_2hpb0")
 [node name="Tete" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello/RigidBody2D"]
 texture = ExtResource("11_lup6r")
 
+[node name="Yeux" type="AnimatedSprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello/RigidBody2D/Tete"]
+position = Vector2(-112, -562)
+sprite_frames = SubResource("SpriteFrames_nvueq")
+
 [node name="Bouche" type="AnimatedSprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello/RigidBody2D/Tete"]
 sprite_frames = SubResource("SpriteFrames_b3yyf")
-frame = 3
+frame = 5
+
+[node name="Clope" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello/RigidBody2D/Tete/Bouche"]
+position = Vector2(39, -427)
+rotation = 0.603884
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("33_jlyhi")
+
+[node name="FrontHair" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello/RigidBody2D/Tete"]
+material = SubResource("ShaderMaterial_5xlix")
+position = Vector2(-101, -620)
+texture = ExtResource("29_50yic")
+
+[node name="BackHair" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello/RigidBody2D/Tete"]
+material = SubResource("ShaderMaterial_0ilvg")
+position = Vector2(-202, -559)
+texture = ExtResource("31_byotq")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="ScooterRigidBody/SpriteChassis/Marcello/RigidBody2D/Tete"]
 position = Vector2(-209, -601)
 mass = 0.5
 
 [node name="Oreille" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello/RigidBody2D/Tete/RigidBody2D"]
+z_index = 1
 material = SubResource("ShaderMaterial_xdeko")
-position = Vector2(0, -2)
+position = Vector2(-10, -8)
 texture = ExtResource("14_51rrv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScooterRigidBody/SpriteChassis/Marcello/RigidBody2D/Tete/RigidBody2D"]
@@ -353,10 +589,18 @@ node_b = NodePath("..")
 softness = 0.5
 
 [node name="Camera2D" type="Camera2D" parent="ScooterRigidBody/SpriteChassis/Marcello/RigidBody2D/Tete"]
-position = Vector2(108, -48)
+position = Vector2(-39, -169)
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 25.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ScooterRigidBody/SpriteChassis/Marcello/RigidBody2D/Tete/Camera2D"]
+libraries = {
+"": SubResource("AnimationLibrary_c46sx")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ScooterRigidBody/SpriteChassis/Marcello/RigidBody2D/Tete/Camera2D"]
+stream = ExtResource("36_p24ph")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="ScooterRigidBody/SpriteChassis/Marcello/RigidBody2D"]
 position = Vector2(-220, -438)
@@ -413,6 +657,12 @@ visible = false
 z_index = 4
 texture = ExtResource("5_5qquv")
 
+[node name="Marker2DAimSuspensionArriere" type="Marker2D" parent="ScooterRigidBody/SpriteChassis"]
+position = Vector2(-203, 186)
+
+[node name="Sprite2D" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marker2DAimSuspensionArriere"]
+texture = ExtResource("5_5qquv")
+
 [node name="SpriteTemplate" type="Sprite2D" parent="ScooterRigidBody"]
 visible = false
 show_behind_parent = true
@@ -442,7 +692,8 @@ texture = ExtResource("5_5qquv")
 position = Vector2(455, 237)
 node_a = NodePath("..")
 node_b = NodePath("FrontWheel")
-softness = 0.2
+bias = 0.9
+softness = 0.5
 
 [node name="FrontWheel" type="RigidBody2D" parent="ScooterRigidBody/FrontWheelPinJoint2D"]
 mass = 11.0
@@ -477,10 +728,11 @@ texture = ExtResource("18_u6lfk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScooterRigidBody/BackWheelPinJoint2D2/BackWheel"]
 shape = SubResource("CircleShape2D_wba75")
 
-[node name="SuspenssionArriere" type="Sprite2D" parent="ScooterRigidBody/BackWheelPinJoint2D2/BackWheel"]
+[node name="SuspenssionArriere" type="Sprite2D" parent="ScooterRigidBody/BackWheelPinJoint2D2/BackWheel" node_paths=PackedStringArray("marker")]
 z_index = -2
 texture = ExtResource("21_ypju0")
 script = ExtResource("22_sln7k")
+marker = NodePath("../../../SpriteChassis/Marker2DAimSuspensionArriere")
 
 [node name="DisqueDeFrein2" type="Sprite2D" parent="ScooterRigidBody"]
 z_index = -2
@@ -735,16 +987,6 @@ position = Vector2(1230, 651)
 polygon = PackedVector2Array(-39, 17, 25, -18, 95, -17, 134, 19)
 
 [node name="Polygon2D" type="Polygon2D" parent="Tas d\'caillasse/la caillasse5/Cailloux/CollisionPolygon2D"]
-color = Color(0.849605, 0, 0, 1)
-polygon = PackedVector2Array(-39, 17, 25, -18, 95, -17, 134, 19)
-
-[node name="Cailloux2" type="StaticBody2D" parent="Tas d\'caillasse/la caillasse5"]
-position = Vector2(4046, 651)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tas d\'caillasse/la caillasse5/Cailloux2"]
-polygon = PackedVector2Array(-39, 17, 883, -284, 1927, -869, 1813, 37)
-
-[node name="Polygon2D" type="Polygon2D" parent="Tas d\'caillasse/la caillasse5/Cailloux2/CollisionPolygon2D"]
 color = Color(0.849605, 0, 0, 1)
 polygon = PackedVector2Array(-39, 17, 25, -18, 95, -17, 134, 19)
 
