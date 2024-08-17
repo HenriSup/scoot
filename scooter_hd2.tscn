@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://cr700bw6m5j65"]
+[gd_scene load_steps=111 format=3 uid="uid://cr700bw6m5j65"]
 
 [ext_resource type="Script" path="res://ScooterRigidBody.gd" id="1_ekt5p"]
 [ext_resource type="Texture2D" uid="uid://b1ckimjgodir3" path="res://Assets/Sprites/Scoot/scootHD/chassis.png" id="2_jp0c1"]
@@ -54,6 +54,9 @@
 [ext_resource type="Texture2D" uid="uid://bap3qtb4diqve" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Mouths/Jubilatin.png" id="33_bk5qu"]
 [ext_resource type="Texture2D" uid="uid://t7ev26woqxo0" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Mouths/lcope.png" id="33_jlyhi"]
 [ext_resource type="AudioStream" uid="uid://bfplfap0xxt8h" path="res://Assets/Audio/Music/Summers Comin Bébé.mp3" id="36_p24ph"]
+[ext_resource type="Script" path="res://InstanceFumee.gd" id="53_nxx2r"]
+[ext_resource type="Texture2D" uid="uid://bm0vyjpsu00eq" path="res://Assets/Sprites/FX/WheelSmoke.png" id="54_s3msn"]
+[ext_resource type="Texture2D" uid="uid://cmq16jcgbhf48" path="res://Assets/Sprites/FX/Driftspritesheet.png" id="55_2pl4f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hycbr"]
 shader = ExtResource("4_ye2u1")
@@ -292,6 +295,162 @@ size = Vector2(1123, 472)
 [sub_resource type="CircleShape2D" id="CircleShape2D_wba75"]
 radius = 195.243
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdlqa"]
+atlas = ExtResource("54_s3msn")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prrok"]
+atlas = ExtResource("54_s3msn")
+region = Rect2(400, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5xva"]
+atlas = ExtResource("54_s3msn")
+region = Rect2(800, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4603"]
+atlas = ExtResource("54_s3msn")
+region = Rect2(1200, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uffr2"]
+atlas = ExtResource("54_s3msn")
+region = Rect2(1600, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dyqsw"]
+atlas = ExtResource("54_s3msn")
+region = Rect2(2000, 0, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cqqbk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdlqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prrok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5xva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4603")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uffr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dyqsw")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 18.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25trq"]
+atlas = ExtResource("55_2pl4f")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yamme"]
+atlas = ExtResource("55_2pl4f")
+region = Rect2(400, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rcn8"]
+atlas = ExtResource("55_2pl4f")
+region = Rect2(800, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw2wv"]
+atlas = ExtResource("55_2pl4f")
+region = Rect2(1200, 0, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hdjnc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25trq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yamme")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rcn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cw2wv")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 19.0
+}]
+
+[sub_resource type="Curve" id="Curve_5xo1f"]
+_data = [Vector2(0.669841, 1), 0.0, 0.0, 0, 0, Vector2(0.91746, 0.416561), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_lc2jn"]
+curve = SubResource("Curve_5xo1f")
+
+[sub_resource type="Gradient" id="Gradient_r2pol"]
+offsets = PackedFloat32Array(0.0174216, 0.219512, 0.512195, 0.682927)
+colors = PackedColorArray(1, 1, 1, 1, 0.799084, 0.644754, 0.288387, 1, 0.823529, 0.0862745, 0.109804, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0poc2"]
+gradient = SubResource("Gradient_r2pol")
+
+[sub_resource type="Curve" id="Curve_2040p"]
+max_value = 300.0
+_data = [Vector2(0, 300), 0.0, 0.0, 0, 0, Vector2(0.288889, 0), 0.0, 0.0, 0, 0, Vector2(0.552381, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_0g6ys"]
+curve = SubResource("Curve_2040p")
+
+[sub_resource type="Curve" id="Curve_8spbh"]
+max_value = 5.0
+_data = [Vector2(0.209524, 1), 0.0, 0.0, 0, 0, Vector2(0.584127, 0.67952), 0.0, 0.0, 0, 0, Vector2(0.688889, 5), 0.0, 0.0, 0, 0, Vector2(0.733333, 1.75348), 0.0, 0.0, 0, 0, Vector2(0.990476, 4.21934), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_8jq8r"]
+curve_x = SubResource("Curve_8spbh")
+
+[sub_resource type="Curve" id="Curve_bhmxu"]
+min_value = -400.0
+max_value = 200.0
+_data = [Vector2(0, -278.255), 0.0, 0.0, 0, 0, Vector2(0.428571, 71.8078), 443.742, 443.742, 0, 0, Vector2(0.787302, -159.924), 29.0235, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_mvk0w"]
+curve = SubResource("Curve_bhmxu")
+
+[sub_resource type="Curve" id="Curve_86bfr"]
+_data = [Vector2(0.0222222, 0.202908), 0.0, 0.0, 0, 0, Vector2(0.120635, 0.687737), 2.5885, 2.5885, 0, 0, Vector2(0.346032, 0.810999), -1.01971, -1.01971, 0, 0, Vector2(0.542857, 0.564475), -1.5531, -1.5531, 0, 0, Vector2(0.815873, 0.186473), -0.896017, -0.896017, 0, 0, Vector2(1, 0.0714285), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="CurveTexture" id="CurveTexture_2a3ur"]
+curve = SubResource("Curve_86bfr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b1a01"]
+particle_flag_disable_z = true
+directional_velocity_min = -70.53
+directional_velocity_max = 70.53
+directional_velocity_curve = SubResource("CurveXYZTexture_8jq8r")
+gravity = Vector3(-2000, -3000, 0)
+linear_accel_min = 5.85
+linear_accel_max = 55.08
+linear_accel_curve = SubResource("CurveTexture_mvk0w")
+damping_max = 100.0
+damping_curve = SubResource("CurveTexture_0g6ys")
+scale_curve = SubResource("CurveTexture_2a3ur")
+color_ramp = SubResource("GradientTexture1D_0poc2")
+alpha_curve = SubResource("CurveTexture_lc2jn")
+anim_speed_max = 14.32
+turbulence_noise_strength = 0.23
+turbulence_noise_scale = 0.838
+
 [node name="Node2D" type="Node2D"]
 metadata/_edit_vertical_guides_ = [-337.0]
 
@@ -301,6 +460,9 @@ gravity_scale = 1.8
 script = ExtResource("1_ekt5p")
 wheels = [NodePath("FrontWheelPinJoint2D/FrontWheel"), NodePath("BackWheelPinJoint2D2/BackWheel")]
 spriteCharacterParts = [NodePath("SpriteChassis/Marcello/BrasGauche"), NodePath("SpriteChassis/Marcello/JambeArriere"), NodePath("SpriteChassis/Marcello/ShortAvant"), NodePath("SpriteChassis/Marcello/RigidBody2D/Tete"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/Torse"), NodePath("SpriteChassis/Marcello/BrasDroit"), NodePath("SpriteChassis/Marcello/RigidBody2D/Tete/RigidBody2D/Oreille"), NodePath("SpriteChassis/Marcello/JambeAvant"), NodePath("SpriteChassis/Marcello/Shortarriere"), NodePath("SpriteChassis/Marcello/RigidBody2D/Tete/Bouche/Clope")]
+
+[node name="Marker2D" type="Marker2D" parent="ScooterRigidBody"]
+position = Vector2(-390, 478)
 
 [node name="ForceMarker" type="Marker2D" parent="ScooterRigidBody"]
 position = Vector2(-290, -436)
@@ -399,9 +561,9 @@ position = Vector2(31, 19)
 
 [node name="Bras" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/BrasDroitPolygones"]
 z_index = 2
-position = Vector2(-302.194, -349.415)
-rotation = 0.0587316
-scale = Vector2(0.999999, 0.999999)
+position = Vector2(-302.193, -349.414)
+rotation = 0.0597718
+scale = Vector2(0.999998, 0.999998)
 offset = Vector2(-406, -366)
 texture = ExtResource("8_ryk6s")
 polygon = PackedVector2Array(371.605, 311.728, 400.617, 296.296, 433.333, 302.469, 469.753, 329.63, 498.148, 353.704, 527.161, 375.926, 552.469, 388.272, 583.951, 403.086, 605.556, 411.111, 631.482, 422.222, 643.21, 429.63, 650, 467.284, 648.766, 501.852, 639.506, 529.63, 617.901, 560.494, 591.358, 572.222, 569.136, 575.309, 546.914, 567.901, 521.605, 551.852, 503.086, 541.975, 485.185, 532.099, 463.58, 549.383, 437.037, 520.988, 417.901, 494.444, 391.975, 464.198, 370.37, 439.506, 352.469, 412.963, 338.889, 372.222, 341.975, 347.531, 353.704, 319.753, 430.328, 392.623, 490.164, 442.623, 578.688, 486.066)
@@ -417,9 +579,9 @@ offset = Vector2(0, 58)
 
 [node name="AvantBras" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/BrasDroitPolygones"]
 z_index = 3
-position = Vector2(-126.669, -220.092)
-rotation = -0.158972
-scale = Vector2(0.999997, 0.999997)
+position = Vector2(-126.8, -219.909)
+rotation = -0.156137
+scale = Vector2(0.999999, 0.999999)
 offset = Vector2(-771, -522)
 texture = ExtResource("8_ryk6s")
 polygon = PackedVector2Array(708.696, 507.609, 743.478, 452.174, 786.956, 452.174, 861.956, 452.174, 938.044, 458.696, 990.217, 459.783, 1021.74, 465.217, 1023.91, 490.217, 1016.3, 554.348, 1008.7, 580.435, 984.783, 588.043, 939.13, 598.913, 863.044, 609.783, 796.739, 620.652, 730.435, 622.826, 698.913, 556.522, 804.478, 532.09, 931.343, 524.627)
@@ -430,9 +592,9 @@ internal_vertex_count = 2
 
 [node name="Main" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/BrasDroitPolygones"]
 z_index = 3
-position = Vector2(90.3757, -217.868)
-rotation = -0.122173
-scale = Vector2(0.999998, 0.999998)
+position = Vector2(90.2379, -217.071)
+rotation = -0.122171
+scale = Vector2(0.999999, 0.999999)
 offset = Vector2(-1180.77, -556.766)
 texture = ExtResource("8_ryk6s")
 polygon = PackedVector2Array(1086.49, 504.505, 1143.24, 444.144, 1326.13, 459.459, 1304.5, 627.027, 1129.73, 622.523, 1212.61, 527.928)
@@ -545,6 +707,7 @@ sprite_frames = SubResource("SpriteFrames_b3yyf")
 frame = 5
 
 [node name="Clope" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello/RigidBody2D/Tete/Bouche"]
+visible = false
 position = Vector2(39, -427)
 rotation = 0.603884
 scale = Vector2(1.2, 1.2)
@@ -589,10 +752,10 @@ node_b = NodePath("..")
 softness = 0.5
 
 [node name="Camera2D" type="Camera2D" parent="ScooterRigidBody/SpriteChassis/Marcello/RigidBody2D/Tete"]
-position = Vector2(-39, -169)
-zoom = Vector2(0.5, 0.5)
+position = Vector2(-44, -33)
+zoom = Vector2(0.3, 0.3)
 position_smoothing_enabled = true
-position_smoothing_speed = 25.0
+position_smoothing_speed = 10.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ScooterRigidBody/SpriteChassis/Marcello/RigidBody2D/Tete/Camera2D"]
 libraries = {
@@ -734,10 +897,60 @@ texture = ExtResource("21_ypju0")
 script = ExtResource("22_sln7k")
 marker = NodePath("../../../SpriteChassis/Marker2DAimSuspensionArriere")
 
+[node name="SmokeEmiter" type="Marker2D" parent="ScooterRigidBody/BackWheelPinJoint2D2"]
+position = Vector2(-593, -143)
+script = ExtResource("53_nxx2r")
+
+[node name="Sprite2D" type="Sprite2D" parent="ScooterRigidBody/BackWheelPinJoint2D2/SmokeEmiter"]
+position = Vector2(647, 338)
+scale = Vector2(3, 3)
+texture = ExtResource("5_5qquv")
+
+[node name="Timer" type="Timer" parent="ScooterRigidBody/BackWheelPinJoint2D2/SmokeEmiter"]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="Timer2" type="Timer" parent="ScooterRigidBody/BackWheelPinJoint2D2/SmokeEmiter"]
+wait_time = 0.08
+one_shot = true
+autostart = true
+
+[node name="SmokeWheel" type="AnimatedSprite2D" parent="ScooterRigidBody/BackWheelPinJoint2D2/SmokeEmiter"]
+visible = false
+z_index = -4
+z_as_relative = false
+position = Vector2(-336, -211)
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_cqqbk")
+autoplay = "default"
+frame_progress = 1.0
+
+[node name="Drift" type="AnimatedSprite2D" parent="ScooterRigidBody/BackWheelPinJoint2D2/SmokeEmiter"]
+visible = false
+z_index = -3
+position = Vector2(423, 276)
+sprite_frames = SubResource("SpriteFrames_hdjnc")
+autoplay = "default"
+frame = 4
+frame_progress = 1.0
+
 [node name="DisqueDeFrein2" type="Sprite2D" parent="ScooterRigidBody"]
 z_index = -2
 position = Vector2(422, 230)
 texture = ExtResource("23_yoyom")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ScooterRigidBody"]
+visible = false
+z_index = -2
+position = Vector2(-653, 21)
+amount = 350
+amount_ratio = 0.0
+process_material = SubResource("ParticleProcessMaterial_b1a01")
+texture = ExtResource("8_ckytb")
+lifetime = 0.8
+trail_lifetime = 0.1
+trail_section_subdivisions = 1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-768, 534)

@@ -88,6 +88,8 @@ func _ready():
 	
 	distance_de_base_inter_exter = distance
 	spriteAccordeonInitialOfsset = spriteAccordeon.offset
+	$BackWheelPinJoint2D2/BackWheel.contact_monitor=true
+	$BackWheelPinJoint2D2/BackWheel.max_contacts_reported=1
 	pass # Replace with function body.
 
 
@@ -95,9 +97,11 @@ func _ready():
 func _process(delta):
 	$DisqueDeFrein.global_position=$FrontWheelPinJoint2D/FrontWheel.global_position
 	$DisqueDeFrein2.global_position=$SpriteChassis/Fourche/Accorderon/BoutAccordeon.global_position
+	
 	if Input.is_action_just_pressed("Reset"):
 		get_tree().reload_current_scene()
 	if Input.is_action_pressed("up"):
+		$GPUParticles2D.amount_ratio=1
 		offsetPhare-=5
 		offsetPhare = clamp(offsetPhare, -maxOffsetPhare , maxOffsetPhare)
 		mainRotate-=6
@@ -105,6 +109,15 @@ func _process(delta):
 		for wheel in wheels:
 			if wheel.angular_velocity < maxSpeed:
 				wheel.apply_torque_impulse(speed * delta * 60)
+		
+		if $BackWheelPinJoint2D2/BackWheel.get_contact_count()>=1:
+			$BackWheelPinJoint2D2/SmokeEmiter.change_should_emit_value(true)
+		else:
+			$BackWheelPinJoint2D2/SmokeEmiter.change_should_emit_value(false)
+		print("contact :",$BackWheelPinJoint2D2/BackWheel.max_contacts_reported)
+	else:
+		$BackWheelPinJoint2D2/SmokeEmiter.change_should_emit_value(false)
+		$GPUParticles2D.amount_ratio=0
 	if Input.is_action_pressed("down"):
 		offsetPhare+=10
 		offsetPhare = clamp(offsetPhare, -maxOffsetPhare , maxOffsetPhare)
