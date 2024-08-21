@@ -3,7 +3,7 @@ extends RigidBody2D
 @export var wheels:Array[RigidBody2D]
 var speed = 320000
 var maxSpeed = 400
-var rotateForce = 65000
+var rotateForce = 3500000
 
 var spriteChassis:Sprite2D
 var spriteGuidonPhare:Sprite2D
@@ -48,25 +48,30 @@ var mainInitialRotation:float
 var mainPolygon:Polygon2D
 var mainRotate:float = 0
 
+@onready var mouth:AnimatedSprite2D=$SpriteChassis/Marcello/TorsoRigidBody2D2/RigidBody2D/Tete/Bouche
+@onready var eye:AnimatedSprite2D=$SpriteChassis/Marcello/TorsoRigidBody2D2/RigidBody2D/Tete/Yeux
+@onready var mouthTimer:Timer=$SpriteChassis/Marcello/TorsoRigidBody2D2/RigidBody2D/Tete/MouthTimer
+@onready var eyeTimer:Timer=$SpriteChassis/Marcello/TorsoRigidBody2D2/RigidBody2D/Tete/EyeTimer
+@onready var eyeAnimationPlayer:AnimationPlayer=$SpriteChassis/Marcello/TorsoRigidBody2D2/RigidBody2D/Tete/EyeAnimationPlayer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	spriteChassis = $SpriteChassis
 	spriteGuidonPhare = $SpriteChassis/GuidonPhare
 	spriteGuidonPhareInitialPosition = spriteGuidonPhare.position
-	spriteMouth = $SpriteChassis/Marcello/RigidBody2D/Tete/Bouche
+	spriteMouth = $SpriteChassis/Marcello/TorsoRigidBody2D2/RigidBody2D/Tete/Bouche
 	spriteGardeBoue = $FrontWheelPinJoint2D/FrontWheel/GardeBoue
 	spritePipe = $SpriteChassis/PotEchappement
 	spriteFourche = $SpriteChassis/Fourche
 	spriteDisqueFreinAvant = $DisqueDeFrein
 	spriteAccordeon = $SpriteChassis/Fourche/Accorderon
 	
-	polygonBras=$SpriteChassis/Marcello/BrasDroitPolygones/Bras
-	mancheBras=$SpriteChassis/Marcello/BrasDroitPolygones/Bras/MancheBras
+	polygonBras=$SpriteChassis/Marcello/TorsoRigidBody2D2/BrasDroitPolygones/Bras
+	mancheBras=$SpriteChassis/Marcello/TorsoRigidBody2D2/BrasDroitPolygones/Bras/MancheBras
 
-	polygonAvantBras=$SpriteChassis/Marcello/BrasDroitPolygones/AvantBras
-	polygonMain=$SpriteChassis/Marcello/BrasDroitPolygones/Main
-	polygonMain2=$SpriteChassis/Marcello/BrasDroitPolygones/Main/Main2
-	mainPolygon=$SpriteChassis/Marcello/BrasDroitPolygones/Main
+	polygonAvantBras=$SpriteChassis/Marcello/TorsoRigidBody2D2/BrasDroitPolygones/AvantBras
+	polygonMain=$SpriteChassis/Marcello/TorsoRigidBody2D2/BrasDroitPolygones/Main
+	polygonMain2=$SpriteChassis/Marcello/TorsoRigidBody2D2/BrasDroitPolygones/Main/Main2
+	mainPolygon=$SpriteChassis/Marcello/TorsoRigidBody2D2/BrasDroitPolygones/Main
 	polygonBrasInitialOfsset=polygonBras.offset
 	mancheBrasInitialOfsset=mancheBras.offset
 	polygonAvantBrasInitialOfsset=polygonAvantBras.offset
@@ -81,7 +86,7 @@ func _ready():
 	
 	mainTarget=$SpriteChassis/GuidonPhare/MainTarget
 	mainTargetOriginalPosition=mainTarget.position
-	mainInitialRotation=$SpriteChassis/Marcello/BrasDroitPolygones/Main.rotation_degrees
+	mainInitialRotation=$SpriteChassis/Marcello/TorsoRigidBody2D2/BrasDroitPolygones/Main.rotation_degrees
 	mainRotate=mainInitialRotation
 	var closestPoint = Geometry2D.get_closest_point_to_segment(pointEntre.global_position,pointInter.global_position,pointExter.global_position)
 	var distance = pointInter.global_position.distance_to(closestPoint)
@@ -114,7 +119,6 @@ func _process(delta):
 			$BackWheelPinJoint2D2/SmokeEmiter.change_should_emit_value(true)
 		else:
 			$BackWheelPinJoint2D2/SmokeEmiter.change_should_emit_value(false)
-		print("contact :",$BackWheelPinJoint2D2/BackWheel.max_contacts_reported)
 	else:
 		$BackWheelPinJoint2D2/SmokeEmiter.change_should_emit_value(false)
 		$GPUParticles2D.amount_ratio=0
@@ -127,9 +131,9 @@ func _process(delta):
 			if wheel.angular_velocity > -maxSpeed:
 				wheel.apply_torque_impulse(-speed * delta * 60)
 	if Input.is_action_pressed("left"):
-		apply_force(Vector2(-rotateForce,0),$ForceMarker.position)
+		apply_force(Vector2(-rotateForce * delta ,0),$ForceMarker.position)
 	if Input.is_action_pressed("right"):
-		apply_force(Vector2(rotateForce,0),$ForceMarker.position)
+		apply_force(Vector2(rotateForce * delta,0),$ForceMarker.position)
 	
 
 	spriteGuidonPhare.position.x = spriteGuidonPhareInitialPosition.x + offsetPhare*0.3	
@@ -205,3 +209,16 @@ func scaleAccordeon():
 	var y = ratio
 	var difference = 1+(1-y)
 	spriteAccordeon.scale=Vector2(difference,y)
+	if ratio<=0.87:
+		mouth.frame=3
+		eyeAnimationPlayer.play("ferme")
+		var alea = randf_range(0.4,0.6)
+		eyeTimer.start(alea)
+		mouthTimer.start(alea)
+	elif mouthTimer.is_stopped():
+		mouth.frame=0
+	if eyeTimer.is_stopped() && eyeAnimationPlayer.current_animation=="ferme":
+		eyeAnimationPlayer.play("ouvert")
+	if eyeAnimationPlayer.current_animation!="cligne1" && eyeAnimationPlayer.current_animation!="ferme" && eyeTimer.is_stopped():
+		eyeAnimationPlayer.play("cligne1")
+		eyeTimer.start(randf_range(2,7))

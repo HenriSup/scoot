@@ -5,9 +5,11 @@ var timerInstance2:Timer
 var smokeWheelAnimatedSprite:AnimatedSprite2D
 var driftAnimatedSprite:AnimatedSprite2D
 var shouldEmit:bool
+var parent:Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	parent=get_parent()
 	timerInstance=$Timer
 	timerInstance2=$Timer2
 	smokeWheelAnimatedSprite=$SmokeWheel
@@ -18,12 +20,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	#$SmokeWheel.rotation=0
+	#$Drift.rotation=0
 	if timerInstance.is_stopped() && shouldEmit:
 		var newSmoke:AnimatedSprite2D = smokeWheelAnimatedSprite.duplicate()
-		newSmoke.global_position= $Sprite2D.global_position-$Sprite2D.position+Vector2(20,-20)
+		newSmoke.global_position= $Drift.global_position+Vector2(-650,-490)
 		newSmoke.show()
 		newSmoke.rotation=0
-		var newScale = randf_range(4.8,6)
+		var newScale = randf_range(8,8)
 		newSmoke.scale.x=newScale
 		newSmoke.scale.y=newScale
 		get_tree().root.add_child(newSmoke)

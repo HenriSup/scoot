@@ -16,4 +16,3 @@ func _process(_delta):
 	look_at(marker.global_position)
 	rotation += deg_to_rad(25)
 	#rotation = -parent.rotation - angle_To_Rotation_point + deg_to_rad(-25)
-
