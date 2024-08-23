@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://cr700bw6m5j65"]
+[gd_scene load_steps=117 format=3 uid="uid://cr700bw6m5j65"]
 
 [ext_resource type="Script" path="res://ScooterRigidBody.gd" id="1_ekt5p"]
 [ext_resource type="Texture2D" uid="uid://b1ckimjgodir3" path="res://Assets/Sprites/Scoot/scootHD/chassis.png" id="2_jp0c1"]
@@ -57,6 +57,15 @@
 [ext_resource type="Script" path="res://InstanceFumee.gd" id="53_nxx2r"]
 [ext_resource type="Texture2D" uid="uid://bm0vyjpsu00eq" path="res://Assets/Sprites/FX/WheelSmoke.png" id="54_s3msn"]
 [ext_resource type="Texture2D" uid="uid://cmq16jcgbhf48" path="res://Assets/Sprites/FX/Driftspritesheet.png" id="55_2pl4f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qwkhu"]
+shader = ExtResource("16_uopkc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iv8bk"]
+shader = ExtResource("19_lk584")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdqbr"]
+size = Vector2(587.842, 144.539)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hycbr"]
 shader = ExtResource("4_ye2u1")
@@ -164,12 +173,6 @@ strength = 0.98
 modification_count = 2
 modifications/0 = SubResource("SkeletonModification2DJiggle_sp5wu")
 modifications/1 = SubResource("SkeletonModification2DCCDIK_el6j6")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qwkhu"]
-shader = ExtResource("16_uopkc")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iv8bk"]
-shader = ExtResource("19_lk584")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hpb0"]
 size = Vector2(271, 244)
@@ -507,8 +510,47 @@ anim_speed_max = 14.32
 turbulence_noise_strength = 0.23
 turbulence_noise_scale = 0.838
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0a1sp"]
+size = Vector2(109.477, 108)
+
 [node name="Node2D" type="Node2D"]
 metadata/_edit_vertical_guides_ = [-337.0]
+
+[node name="JambesRigidBody" type="RigidBody2D" parent="."]
+z_index = 1
+position = Vector2(2, -105)
+collision_layer = 2048
+collision_mask = 2048
+mass = 2.0
+
+[node name="JambeArriere" type="Sprite2D" parent="JambesRigidBody"]
+modulate = Color(0.625597, 0.625597, 0.625597, 1)
+z_index = -1
+texture = ExtResource("15_ss651")
+
+[node name="Shortarriere" type="Sprite2D" parent="JambesRigidBody"]
+z_index = -1
+material = SubResource("ShaderMaterial_qwkhu")
+texture = ExtResource("16_txscx")
+
+[node name="JambeAvant" type="Sprite2D" parent="JambesRigidBody"]
+texture = ExtResource("17_dwjcv")
+
+[node name="ShortAvant" type="Sprite2D" parent="JambesRigidBody"]
+material = SubResource("ShaderMaterial_iv8bk")
+texture = ExtResource("18_7menq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JambesRigidBody"]
+position = Vector2(-65, 108)
+rotation = 0.646057
+shape = SubResource("RectangleShape2D_jdqbr")
+debug_color = Color(0.976901, 0, 0.408291, 0.42)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="JambesRigidBody"]
+position = Vector2(-263, -41)
+node_a = NodePath("../../ScooterRigidBody")
+node_b = NodePath("..")
+softness = 0.1
 
 [node name="ScooterRigidBody" type="RigidBody2D" parent="." node_paths=PackedStringArray("wheels", "spriteCharacterParts")]
 physics_interpolation_mode = 1
@@ -516,7 +558,7 @@ mass = 50.0
 gravity_scale = 1.8
 script = ExtResource("1_ekt5p")
 wheels = [NodePath("FrontWheelPinJoint2D/FrontWheel"), NodePath("BackWheelPinJoint2D2/BackWheel")]
-spriteCharacterParts = [NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/BrasGauche"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/JambeArriere"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/ShortAvant"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/RigidBody2D/Tete"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/Torse"), NodePath("SpriteChassis/Marcello/BrasDroit"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/RigidBody2D/Tete/RigidBody2D/Oreille"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/JambeAvant"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/Shortarriere"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/RigidBody2D/Tete/Bouche/Clope")]
+spriteCharacterParts = [NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/BrasGauche"), NodePath("../JambesRigidBody/JambeArriere"), NodePath("../JambesRigidBody/ShortAvant"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/RigidBody2D/Tete"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/Torse"), NodePath("SpriteChassis/Marcello/BrasDroit"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/RigidBody2D/Tete/RigidBody2D/Oreille"), NodePath("../JambesRigidBody/JambeAvant"), NodePath("../JambesRigidBody/Shortarriere"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/RigidBody2D/Tete/Bouche/Clope")]
 
 [node name="Marker2D" type="Marker2D" parent="ScooterRigidBody"]
 position = Vector2(-390, 478)
@@ -640,8 +682,8 @@ position = Vector2(31, 19)
 
 [node name="Bras" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/BrasDroitPolygones"]
 z_index = 2
-position = Vector2(-302.193, -349.415)
-rotation = 0.0583874
+position = Vector2(-302.229, -349.491)
+rotation = 0.0600519
 scale = Vector2(0.999999, 0.999999)
 offset = Vector2(-406, -366)
 texture = ExtResource("8_ryk6s")
@@ -658,8 +700,9 @@ offset = Vector2(0, 58)
 
 [node name="AvantBras" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/BrasDroitPolygones"]
 z_index = 3
-position = Vector2(-126.627, -220.151)
-rotation = -0.16067
+position = Vector2(-126.877, -219.936)
+rotation = -0.15876
+scale = Vector2(1, 1)
 offset = Vector2(-771, -522)
 texture = ExtResource("8_ryk6s")
 polygon = PackedVector2Array(708.696, 507.609, 743.478, 452.174, 786.956, 452.174, 861.956, 452.174, 938.044, 458.696, 990.217, 459.783, 1021.74, 465.217, 1023.91, 490.217, 1016.3, 554.348, 1008.7, 580.435, 984.783, 588.043, 939.13, 598.913, 863.044, 609.783, 796.739, 620.652, 730.435, 622.826, 698.913, 556.522, 804.478, 532.09, 931.343, 524.627)
@@ -670,7 +713,7 @@ internal_vertex_count = 2
 
 [node name="Main" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/BrasDroitPolygones"]
 z_index = 3
-position = Vector2(90.422, -218.297)
+position = Vector2(90.1676, -217.667)
 rotation = -0.122171
 scale = Vector2(1, 1)
 offset = Vector2(-1180.77, -556.766)
@@ -705,6 +748,7 @@ position = Vector2(-198.478, -385.093)
 rotation = 0.217021
 scale = Vector2(0.999996, 0.999996)
 rest = Transform2D(0.997502, 0.0706359, -0.0706359, 0.997502, -281.241, -391.362)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Bras" type="Bone2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/Skeleton2D/Epaule"]
 position = Vector2(-37.1733, 24.0649)
@@ -748,23 +792,6 @@ position = Vector2(-118, -189)
 
 [node name="BrasGauche" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2"]
 texture = ExtResource("8_ffcib")
-
-[node name="JambeArriere" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2"]
-modulate = Color(0.625597, 0.625597, 0.625597, 1)
-z_index = -1
-texture = ExtResource("15_ss651")
-
-[node name="Shortarriere" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2"]
-z_index = -1
-material = SubResource("ShaderMaterial_qwkhu")
-texture = ExtResource("16_txscx")
-
-[node name="JambeAvant" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2"]
-texture = ExtResource("17_dwjcv")
-
-[node name="ShortAvant" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2"]
-material = SubResource("ShaderMaterial_iv8bk")
-texture = ExtResource("18_7menq")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2"]
 mass = 0.8
@@ -905,7 +932,7 @@ show_behind_parent = true
 z_index = -1
 texture = ExtResource("16_62kdm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ScooterRigidBody"]
+[node name="ScooterCollisionShape2D" type="CollisionShape2D" parent="ScooterRigidBody"]
 position = Vector2(-52, 64)
 shape = SubResource("RectangleShape2D_rydwv")
 
@@ -1025,6 +1052,34 @@ texture = ExtResource("8_ckytb")
 lifetime = 0.8
 trail_lifetime = 0.1
 trail_section_subdivisions = 1
+
+[node name="BlocageJambeRigidBody" type="RigidBody2D" parent="ScooterRigidBody"]
+collision_layer = 2048
+collision_mask = 2048
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScooterRigidBody/BlocageJambeRigidBody"]
+z_index = 2
+position = Vector2(61.7981, 260.538)
+rotation = 0.64486
+shape = SubResource("RectangleShape2D_0a1sp")
+debug_color = Color(0.899287, 0.313038, 0.00406339, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ScooterRigidBody/BlocageJambeRigidBody"]
+z_index = 2
+position = Vector2(260, -76)
+rotation = 0.64486
+shape = SubResource("RectangleShape2D_0a1sp")
+debug_color = Color(0.899287, 0.313038, 0.00406339, 0.42)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="ScooterRigidBody/BlocageJambeRigidBody"]
+position = Vector2(34, 236)
+node_a = NodePath("../..")
+node_b = NodePath("..")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="ScooterRigidBody/BlocageJambeRigidBody"]
+position = Vector2(93, 274)
+node_a = NodePath("../..")
+node_b = NodePath("..")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-768, 534)
