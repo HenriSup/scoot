@@ -1,7 +1,8 @@
 shader_type canvas_item;
+uniform float force = 0.0020;
 
 void fragment(){
 	 vec2 distortedUV = UV;
-	distortedUV.y += sin(distortedUV.x * 45.5 + TIME*35.0) * 0.0020;
+	distortedUV.y += sin(distortedUV.x * 45.5 + TIME*35.0) * force;
 	COLOR = texture(TEXTURE, distortedUV);
 }

@@ -1,6 +1,8 @@
 extends RigidBody2D
 
 @export var wheels:Array[RigidBody2D]
+@export var spriteWaveShaders:Array[Sprite2D]
+@export var spriteWaveShadersValues:Array[float]
 var speed = 320000
 var maxSpeed = 400
 var rotateForce = 3500000
@@ -102,7 +104,7 @@ func _ready():
 func _process(delta):
 	$DisqueDeFrein.global_position=$FrontWheelPinJoint2D/FrontWheel.global_position
 	$DisqueDeFrein2.global_position=$SpriteChassis/Fourche/Accorderon/BoutAccordeon.global_position
-	
+	print("scoot lineaspeed:",linear_velocity)
 	if Input.is_action_just_pressed("Reset"):
 		get_tree().reload_current_scene()
 	if Input.is_action_pressed("up"):
@@ -142,7 +144,21 @@ func _process(delta):
 
 	vibrateParts()
 	scaleAccordeon()
-	
+	animateWaveShaders()
+
+func animateWaveShaders():
+	if (linear_velocity.x>50):
+		var ratio = linear_velocity.x/2500
+		ratio = clampf(ratio,0,1)
+		var i = 0
+		for sprite in spriteWaveShaders:
+			sprite.material.set_shader_parameter("force",spriteWaveShadersValues[i]*ratio)
+			i+=1
+	else : 
+		for sprite in spriteWaveShaders:
+			sprite.material.set_shader_parameter("force",0)
+	pass
+
 func vibrateParts():
 	var frameVibrationForce = 5
 	var mudgardVibrationForce = 3
