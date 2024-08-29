@@ -23,13 +23,21 @@ var polygonBras:Polygon2D
 var polygonBrasInitialOfsset:Vector2
 var mancheBras:Sprite2D
 var mancheBrasInitialOfsset:Vector2
-
 var polygonAvantBras:Polygon2D
 var polygonAvantBrasInitialOfsset:Vector2
 var polygonMain:Polygon2D
-var polygonMain2:Polygon2D
 var polygonMainInitialOfsset:Vector2
-var polygonMain2InitialOfsset:Vector2
+
+var polygonBrasGauche:Polygon2D
+var polygonBrasGaucheInitialOfsset:Vector2
+var mancheBrasGauche:Sprite2D
+var mancheBrasGaucheInitialOfsset:Vector2
+var polygonAvantBrasGauche:Polygon2D
+var polygonAvantBrasGaucheInitialOfsset:Vector2
+var polygonMainGauche:Polygon2D
+var polygonMainGaucheInitialOfsset:Vector2
+
+
 
 var spriteAccordeonInitialOfsset:Vector2
 var testPolygon2D:Polygon2D
@@ -69,16 +77,25 @@ func _ready():
 	
 	polygonBras=$SpriteChassis/Marcello/TorsoRigidBody2D2/BrasDroitPolygones/Bras
 	mancheBras=$SpriteChassis/Marcello/TorsoRigidBody2D2/BrasDroitPolygones/Bras/MancheBras
-
 	polygonAvantBras=$SpriteChassis/Marcello/TorsoRigidBody2D2/BrasDroitPolygones/AvantBras
 	polygonMain=$SpriteChassis/Marcello/TorsoRigidBody2D2/BrasDroitPolygones/Main
-	polygonMain2=$SpriteChassis/Marcello/TorsoRigidBody2D2/BrasDroitPolygones/Main/Main2
+	
+	polygonBrasGauche=$SpriteChassis/Marcello/TorsoRigidBody2D2/BrasGauchePolygones/Bras
+	mancheBrasGauche=$SpriteChassis/Marcello/TorsoRigidBody2D2/BrasGauchePolygones/Bras/MancheBras
+	polygonAvantBrasGauche=$SpriteChassis/Marcello/TorsoRigidBody2D2/BrasGauchePolygones/AvantBras
+	polygonMainGauche=$SpriteChassis/Marcello/TorsoRigidBody2D2/BrasGauchePolygones/Main
+
 	mainPolygon=$SpriteChassis/Marcello/TorsoRigidBody2D2/BrasDroitPolygones/Main
 	polygonBrasInitialOfsset=polygonBras.offset
 	mancheBrasInitialOfsset=mancheBras.offset
 	polygonAvantBrasInitialOfsset=polygonAvantBras.offset
 	polygonMainInitialOfsset=polygonMain.offset
-	polygonMain2InitialOfsset=polygonMain2.offset
+	
+	polygonBrasGaucheInitialOfsset=polygonBrasGauche.offset
+	mancheBrasGaucheInitialOfsset=mancheBrasGauche.offset
+	polygonAvantBrasGaucheInitialOfsset=polygonAvantBrasGauche.offset
+	polygonMainGaucheInitialOfsset=polygonMainGauche.offset
+
 	
 	
 	
@@ -175,11 +192,16 @@ func vibrateParts():
 		spriteGuidonPhare.offset=Vector2(rand1*0.8,rand2*0.8)
 		
 		polygonBras.offset=polygonBrasInitialOfsset+Vector2(rand1*0.8,rand2*0.8)
+		polygonBrasGauche.offset=polygonBrasGaucheInitialOfsset+Vector2(rand1*0.8,rand2*0.8)
 		mancheBras.offset=mancheBrasInitialOfsset+Vector2(rand1*0.8,rand2*0.8)
+		mancheBrasGauche.offset=mancheBrasGaucheInitialOfsset+Vector2(rand1*0.8,rand2*0.8)
 
 		polygonAvantBras.offset=polygonAvantBrasInitialOfsset+Vector2(rand1*0.8,rand2*0.8)
 		polygonMain.offset=polygonMainInitialOfsset+Vector2(rand1*0.8,rand2*0.8)
-		polygonMain2.offset=polygonMain2InitialOfsset+Vector2(rand1*0.8,rand2*0.8)
+		
+		polygonAvantBrasGauche.offset=polygonAvantBrasGaucheInitialOfsset+Vector2(rand1*0.8,rand2*0.8)
+		polygonMainGauche.offset=polygonMainGaucheInitialOfsset+Vector2(rand1*0.8,rand2*0.8)
+
 		
 		#mainTarget.position=mainTargetOriginalPosition+(Vector2(rand1*0.8,rand2*0.8))
 		
@@ -207,7 +229,7 @@ func vibrateParts():
 
 		polygonAvantBras.offset=polygonAvantBrasInitialOfsset
 		polygonMain.offset=polygonMainInitialOfsset
-		polygonMain2.offset=polygonMain2InitialOfsset
+
 		#mainTarget.positi
 		#mainTarget.position=mainTargetOriginalPosition
 		

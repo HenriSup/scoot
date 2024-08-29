@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=3 uid="uid://cr700bw6m5j65"]
+[gd_scene load_steps=124 format=3 uid="uid://cr700bw6m5j65"]
 
 [ext_resource type="Script" path="res://ScooterRigidBody.gd" id="1_ekt5p"]
 [ext_resource type="Texture2D" uid="uid://b1ckimjgodir3" path="res://Assets/Sprites/Scoot/scootHD/chassis.png" id="2_jp0c1"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://bb1ud02waexe2" path="res://Assets/Sprites/Scoot/scootHD/GuidonPhare2.png" id="6_odush"]
 [ext_resource type="Texture2D" uid="uid://b1jptgckofbpn" path="res://Assets/Sprites/Scoot/scootHD/Pot d'échappement.png" id="7_lel6x"]
 [ext_resource type="Texture2D" uid="uid://dncxna2mpfec0" path="res://Assets/Sprites/Scoot/scootHD/FX/SmokeWhite.png" id="8_ckytb"]
-[ext_resource type="Texture2D" uid="uid://che0ibci42gs" path="res://Assets/Sprites/Scoot/scootHD/Marcello/bras gauche.png" id="8_ffcib"]
 [ext_resource type="Texture2D" uid="uid://c0u36jvphk6p7" path="res://Assets/Sprites/Scoot/scootHD/Marcello/testrig/bras et main complet.png" id="8_ryk6s"]
 [ext_resource type="Texture2D" uid="uid://dmu1jpt2258jv" path="res://Assets/Sprites/Scoot/scootHD/Marcello/testrig/mange.png" id="9_0vyko"]
 [ext_resource type="Texture2D" uid="uid://cv5j04jnp7eai" path="res://Assets/Sprites/Scoot/scootHD/Marcello/testrig/main noire.png" id="9_54t0c"]
@@ -47,6 +46,9 @@
 [ext_resource type="Script" path="res://SuspenssionArriere.gd" id="22_sln7k"]
 [ext_resource type="Texture2D" uid="uid://dllu3orng8u54" path="res://Assets/Sprites/Scoot/scootHD/disque frein avant 2.png" id="23_yoyom"]
 [ext_resource type="Texture2D" uid="uid://cq3sq2v0l11m6" path="res://Assets/Sprites/Background/GridTexture.png" id="24_64h4e"]
+[ext_resource type="Texture2D" uid="uid://fdef7smkmoo7" path="res://Assets/Sprites/Scoot/scootHD/Marcello/testrig/Bras gauche/Bras Gauche.png" id="25_bcglh"]
+[ext_resource type="Texture2D" uid="uid://dnm80smxbj7t8" path="res://Assets/Sprites/Scoot/scootHD/Marcello/testrig/bras gauche complet.png" id="25_qbyl1"]
+[ext_resource type="Script" path="res://bras_gauche.gd" id="26_6g8d6"]
 [ext_resource type="Shader" path="res://scooter_hd2.gdshader" id="28_k87hq"]
 [ext_resource type="Texture2D" uid="uid://c6u30lep0nfr4" path="res://Assets/Sprites/Scoot/scootHD/Marcello/Tete/hairFront.png" id="29_50yic"]
 [ext_resource type="Shader" path="res://scooter_hdd2.gdshader" id="30_wqrnv"]
@@ -591,7 +593,7 @@ script = ExtResource("1_ekt5p")
 wheels = [NodePath("FrontWheelPinJoint2D/FrontWheel"), NodePath("BackWheelPinJoint2D2/BackWheel")]
 spriteWaveShaders = [NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/Torse"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/RigidBody2D/Tete/FrontHair"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/RigidBody2D/Tete/BackHair"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/RigidBody2D/Tete/RigidBody2D/Oreille"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/BrasDroitPolygones/Bras/MancheBras"), NodePath("../JambeDroiteRigidBody/ShortAvant"), NodePath("../JambeGaucheRigidBody/Shortarriere")]
 spriteWaveShadersValues = Array[float]([0.005, 0.02, 0.025, 0.023, 0.01, 0.002, 0.002])
-spriteCharacterParts = [NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/BrasGauche"), NodePath("../JambeGaucheRigidBody/Shortarriere"), NodePath("../JambeDroiteRigidBody/ShortAvant"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/RigidBody2D/Tete"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/Torse"), NodePath("SpriteChassis/Marcello/BrasDroit"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/RigidBody2D/Tete/RigidBody2D/Oreille"), NodePath("../JambeDroiteRigidBody/JambeAvant"), NodePath("../JambeGaucheRigidBody/JambeArriere"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/RigidBody2D/Tete/Bouche/Clope")]
+spriteCharacterParts = [NodePath("SpriteChassis/Marcello/BrasGauche"), NodePath("../JambeGaucheRigidBody/Shortarriere"), NodePath("../JambeDroiteRigidBody/ShortAvant"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/RigidBody2D/Tete"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/Torse"), NodePath("SpriteChassis/Marcello/BrasDroit"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/RigidBody2D/Tete/RigidBody2D/Oreille"), NodePath("../JambeDroiteRigidBody/JambeAvant"), NodePath("../JambeGaucheRigidBody/JambeArriere"), NodePath("SpriteChassis/Marcello/TorsoRigidBody2D2/RigidBody2D/Tete/Bouche/Clope")]
 
 [node name="Marker2D" type="Marker2D" parent="ScooterRigidBody"]
 position = Vector2(-390, 478)
@@ -715,9 +717,9 @@ position = Vector2(31, 19)
 
 [node name="Bras" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/BrasDroitPolygones"]
 z_index = 2
-position = Vector2(-302.229, -349.491)
-rotation = 0.0606199
-scale = Vector2(0.999996, 0.999996)
+position = Vector2(-302.193, -349.415)
+rotation = 0.0597583
+scale = Vector2(0.999995, 0.999995)
 offset = Vector2(-406, -366)
 texture = ExtResource("8_ryk6s")
 polygon = PackedVector2Array(371.605, 311.728, 400.617, 296.296, 433.333, 302.469, 469.753, 329.63, 498.148, 353.704, 527.161, 375.926, 552.469, 388.272, 583.951, 403.086, 605.556, 411.111, 631.482, 422.222, 643.21, 429.63, 650, 467.284, 648.766, 501.852, 639.506, 529.63, 617.901, 560.494, 591.358, 572.222, 569.136, 575.309, 546.914, 567.901, 521.605, 551.852, 503.086, 541.975, 485.185, 532.099, 463.58, 549.383, 437.037, 520.988, 417.901, 494.444, 391.975, 464.198, 370.37, 439.506, 352.469, 412.963, 338.889, 372.222, 341.975, 347.531, 353.704, 319.753, 430.328, 392.623, 490.164, 442.623, 578.688, 486.066)
@@ -733,9 +735,9 @@ offset = Vector2(0, 58)
 
 [node name="AvantBras" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/BrasDroitPolygones"]
 z_index = 3
-position = Vector2(-126.949, -219.837)
-rotation = -0.157158
-scale = Vector2(0.999999, 0.999999)
+position = Vector2(-126.798, -219.912)
+rotation = -0.156167
+scale = Vector2(0.999997, 0.999997)
 offset = Vector2(-771, -522)
 texture = ExtResource("8_ryk6s")
 polygon = PackedVector2Array(708.696, 507.609, 743.478, 452.174, 786.956, 452.174, 861.956, 452.174, 938.044, 458.696, 990.217, 459.783, 1021.74, 465.217, 1023.91, 490.217, 1016.3, 554.348, 1008.7, 580.435, 984.783, 588.043, 939.13, 598.913, 863.044, 609.783, 796.739, 620.652, 730.435, 622.826, 698.913, 556.522, 804.478, 532.09, 931.343, 524.627)
@@ -746,9 +748,9 @@ internal_vertex_count = 2
 
 [node name="Main" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/BrasDroitPolygones"]
 z_index = 3
-position = Vector2(90.0914, -217.22)
+position = Vector2(90.2389, -217.08)
 rotation = -0.122171
-scale = Vector2(1, 1)
+scale = Vector2(0.999997, 0.999997)
 offset = Vector2(-1180.77, -556.766)
 texture = ExtResource("8_ryk6s")
 polygon = PackedVector2Array(1086.49, 504.505, 1143.24, 444.144, 1326.13, 459.459, 1304.5, 627.027, 1129.73, 622.523, 1212.61, 527.928)
@@ -758,6 +760,74 @@ bones = ["Bras", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Bras/AvantBras", PackedF
 internal_vertex_count = 1
 
 [node name="Main2" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/BrasDroitPolygones/Main"]
+visible = false
+z_index = -1
+position = Vector2(0, -0.000610352)
+scale = Vector2(0.999999, 0.999999)
+offset = Vector2(-1158.73, -565.77)
+texture = ExtResource("9_54t0c")
+polygon = PackedVector2Array(1086.49, 504.505, 1143.24, 444.144, 1326.13, 459.459, 1304.5, 627.027, 1129.73, 622.523, 1212.61, 527.928)
+uv = PackedVector2Array(1086.49, 504.505, 1143.24, 444.144, 1326.13, 459.459, 1304.5, 627.027, 1129.73, 622.523, 1209.01, 523.423)
+polygons = [PackedInt32Array(1, 5, 2), PackedInt32Array(5, 2, 3), PackedInt32Array(5, 3, 4), PackedInt32Array(5, 4, 0), PackedInt32Array(5, 0, 1)]
+bones = ["Bras", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Bras/AvantBras", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Bras/AvantBras/Main", PackedFloat32Array(1, 1, 1, 1, 1, 1)]
+internal_vertex_count = 1
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/BrasDroitPolygones/Main"]
+visible = false
+position = Vector2(13.0792, -17.7693)
+remote_path = NodePath("../../../../BrasGauche")
+use_global_coordinates = false
+update_rotation = false
+
+[node name="BrasGauchePolygones" type="Node2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2"]
+z_index = -3
+position = Vector2(31, 19)
+
+[node name="Bras" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/BrasGauchePolygones"]
+z_index = 2
+position = Vector2(-302.193, -349.415)
+rotation = 0.0597583
+scale = Vector2(0.999995, 0.999995)
+offset = Vector2(-406, -381)
+texture = ExtResource("8_ryk6s")
+polygon = PackedVector2Array(371.605, 311.728, 400.617, 296.296, 433.333, 302.469, 469.753, 329.63, 498.148, 353.704, 527.161, 375.926, 552.469, 388.272, 583.951, 403.086, 605.556, 411.111, 631.482, 422.222, 643.21, 429.63, 650, 467.284, 648.766, 501.852, 639.506, 529.63, 617.901, 560.494, 591.358, 572.222, 569.136, 575.309, 546.914, 567.901, 521.605, 551.852, 503.086, 541.975, 485.185, 532.099, 463.58, 549.383, 437.037, 520.988, 417.901, 494.444, 391.975, 464.198, 370.37, 439.506, 352.469, 412.963, 338.889, 372.222, 341.975, 347.531, 353.704, 319.753, 430.328, 392.623, 490.164, 442.623, 578.688, 486.066)
+uv = PackedVector2Array(371.605, 311.728, 400.617, 296.296, 433.333, 302.469, 469.753, 329.63, 498.148, 353.704, 527.161, 375.926, 552.469, 388.272, 583.951, 403.086, 605.556, 411.111, 631.482, 422.222, 643.21, 429.63, 650, 467.284, 648.766, 501.852, 639.506, 529.63, 617.901, 560.494, 591.358, 572.222, 569.136, 575.309, 546.914, 567.901, 521.605, 551.852, 503.086, 541.975, 485.185, 532.099, 463.58, 549.383, 437.037, 520.988, 417.901, 494.444, 391.975, 464.198, 370.37, 439.506, 352.469, 412.963, 338.889, 372.222, 341.975, 347.531, 353.704, 319.753, 430.328, 392.623, 490.164, 442.623, 578.688, 486.066)
+polygons = [PackedInt32Array(3, 30, 2), PackedInt32Array(30, 4, 3), PackedInt32Array(30, 5, 4), PackedInt32Array(31, 30, 5), PackedInt32Array(5, 6, 31), PackedInt32Array(30, 1, 2), PackedInt32Array(30, 0, 1), PackedInt32Array(29, 30, 0), PackedInt32Array(28, 29, 30), PackedInt32Array(27, 28, 30), PackedInt32Array(27, 26, 30), PackedInt32Array(30, 25, 26), PackedInt32Array(30, 24, 25), PackedInt32Array(23, 30, 24), PackedInt32Array(31, 23, 30), PackedInt32Array(31, 22, 23), PackedInt32Array(31, 21, 22), PackedInt32Array(7, 31, 6), PackedInt32Array(20, 31, 21), PackedInt32Array(7, 32, 31), PackedInt32Array(8, 32, 7), PackedInt32Array(9, 32, 8), PackedInt32Array(10, 32, 9), PackedInt32Array(11, 32, 10), PackedInt32Array(12, 32, 11), PackedInt32Array(13, 32, 12), PackedInt32Array(14, 32, 13), PackedInt32Array(15, 32, 14), PackedInt32Array(16, 32, 15), PackedInt32Array(17, 32, 16), PackedInt32Array(31, 19, 20), PackedInt32Array(19, 32, 31), PackedInt32Array(18, 32, 19), PackedInt32Array(18, 17, 32)]
+bones = ["Bras", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bras/AvantBras", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bras/AvantBras/Main", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+internal_vertex_count = 3
+
+[node name="MancheBras" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/BrasGauchePolygones/Bras"]
+material = SubResource("ShaderMaterial_g2qlr")
+texture = ExtResource("9_0vyko")
+offset = Vector2(0, 48)
+
+[node name="AvantBras" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/BrasGauchePolygones"]
+z_index = 3
+position = Vector2(-126.798, -219.912)
+rotation = -0.156167
+scale = Vector2(0.999997, 0.999997)
+offset = Vector2(-771, -537)
+texture = ExtResource("8_ryk6s")
+polygon = PackedVector2Array(708.696, 507.609, 743.478, 452.174, 786.956, 452.174, 861.956, 452.174, 938.044, 458.696, 990.217, 459.783, 1021.74, 465.217, 1023.91, 490.217, 1016.3, 554.348, 1008.7, 580.435, 984.783, 588.043, 939.13, 598.913, 863.044, 609.783, 796.739, 620.652, 730.435, 622.826, 698.913, 556.522, 804.478, 532.09, 931.343, 524.627)
+uv = PackedVector2Array(708.696, 507.609, 743.478, 452.174, 786.956, 452.174, 861.956, 452.174, 938.044, 458.696, 990.217, 459.783, 1021.74, 465.217, 1023.91, 490.217, 1016.3, 554.348, 1008.7, 580.435, 984.783, 588.043, 939.13, 598.913, 863.044, 609.783, 796.739, 620.652, 730.435, 622.826, 700, 558.696, 804.478, 532.09, 931.343, 524.627)
+polygons = [PackedInt32Array(2, 16, 1), PackedInt32Array(1, 0, 16), PackedInt32Array(16, 0, 15), PackedInt32Array(16, 15, 14), PackedInt32Array(16, 14, 13), PackedInt32Array(16, 13, 12), PackedInt32Array(2, 16, 3), PackedInt32Array(4, 17, 5), PackedInt32Array(17, 16, 3, 4), PackedInt32Array(17, 11, 12, 16), PackedInt32Array(11, 10, 17), PackedInt32Array(10, 9, 17), PackedInt32Array(17, 5, 6), PackedInt32Array(17, 6, 7), PackedInt32Array(17, 8, 7), PackedInt32Array(17, 9, 8)]
+bones = ["Bras", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bras/AvantBras", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "Bras/AvantBras/Bone2D", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+internal_vertex_count = 2
+
+[node name="Main" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/BrasGauchePolygones"]
+z_index = 3
+position = Vector2(90.2389, -217.08)
+rotation = 0.0802851
+scale = Vector2(0.999997, 0.999997)
+offset = Vector2(-1180.77, -571.766)
+texture = ExtResource("25_bcglh")
+polygon = PackedVector2Array(1086.49, 504.505, 1143.24, 444.144, 1326.13, 459.459, 1304.5, 627.027, 1129.73, 622.523, 1212.61, 527.928)
+uv = PackedVector2Array(1086.49, 504.505, 1143.24, 444.144, 1326.13, 459.459, 1304.5, 627.027, 1129.73, 622.523, 1209.01, 523.423)
+polygons = [PackedInt32Array(1, 5, 2), PackedInt32Array(5, 2, 3), PackedInt32Array(5, 3, 4), PackedInt32Array(5, 4, 0), PackedInt32Array(5, 0, 1)]
+bones = ["Bras", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Bras/AvantBras", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Bras/AvantBras/Main", PackedFloat32Array(1, 1, 1, 1, 1, 1)]
+internal_vertex_count = 1
+
+[node name="Main2" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/BrasGauchePolygones/Main"]
 visible = false
 z_index = -1
 position = Vector2(0, -0.000610352)
@@ -781,7 +851,6 @@ position = Vector2(-198.478, -385.093)
 rotation = 0.217021
 scale = Vector2(0.999996, 0.999996)
 rest = Transform2D(0.997502, 0.0706359, -0.0706359, 0.997502, -281.241, -391.362)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="Bras" type="Bone2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/Skeleton2D/Epaule"]
 position = Vector2(-37.1733, 24.0649)
@@ -792,6 +861,9 @@ metadata/_local_pose_override_enabled_ = true
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/Skeleton2D/Epaule/Bras"]
 remote_path = NodePath("../../../../BrasDroitPolygones/Bras")
 
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/Skeleton2D/Epaule/Bras"]
+remote_path = NodePath("../../../../BrasGauchePolygones/Bras")
+
 [node name="AvantBras" type="Bone2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/Skeleton2D/Epaule/Bras"]
 position = Vector2(183.245, 120.75)
 rotation = -0.258642
@@ -801,6 +873,10 @@ metadata/_local_pose_override_enabled_ = true
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/Skeleton2D/Epaule/Bras/AvantBras"]
 position = Vector2(0, -2)
 remote_path = NodePath("../../../../../BrasDroitPolygones/AvantBras")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/Skeleton2D/Epaule/Bras/AvantBras"]
+position = Vector2(0, -2)
+remote_path = NodePath("../../../../../BrasGauchePolygones/AvantBras")
 
 [node name="Main" type="Bone2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/Skeleton2D/Epaule/Bras/AvantBras"]
 position = Vector2(213.956, 34.5541)
@@ -815,6 +891,10 @@ metadata/_local_pose_override_enabled_ = true
 remote_path = NodePath("../../../../../../BrasDroitPolygones/Main")
 update_rotation = false
 
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/Skeleton2D/Epaule/Bras/AvantBras/Main"]
+remote_path = NodePath("../../../../../../BrasGauchePolygones/Main")
+update_rotation = false
+
 [node name="IKTargets" type="Node2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2"]
 
 [node name="BrasTarget" type="Node2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/IKTargets"]
@@ -822,9 +902,6 @@ position = Vector2(-402, -273)
 
 [node name="AvantBrasTarget" type="Node2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/IKTargets"]
 position = Vector2(-118, -189)
-
-[node name="BrasGauche" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2"]
-texture = ExtResource("8_ffcib")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2"]
 mass = 0.8
@@ -940,6 +1017,14 @@ visible = false
 z_index = 1
 position = Vector2(1, 0)
 texture = ExtResource("13_bhgmp")
+
+[node name="BrasGauche" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello"]
+visible = false
+z_index = -4
+position = Vector2(13.0792, -17.7693)
+rotation = -0.0523601
+texture = ExtResource("25_qbyl1")
+script = ExtResource("26_6g8d6")
 
 [node name="PointExterieur" type="Marker2D" parent="ScooterRigidBody/SpriteChassis"]
 position = Vector2(436, 258)
