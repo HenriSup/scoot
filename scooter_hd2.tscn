@@ -717,9 +717,9 @@ position = Vector2(31, 19)
 
 [node name="Bras" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/BrasDroitPolygones"]
 z_index = 2
-position = Vector2(-302.193, -349.415)
-rotation = 0.0597583
-scale = Vector2(0.999995, 0.999995)
+position = Vector2(-302.229, -349.491)
+rotation = 0.0598882
+scale = Vector2(0.999996, 0.999996)
 offset = Vector2(-406, -366)
 texture = ExtResource("8_ryk6s")
 polygon = PackedVector2Array(371.605, 311.728, 400.617, 296.296, 433.333, 302.469, 469.753, 329.63, 498.148, 353.704, 527.161, 375.926, 552.469, 388.272, 583.951, 403.086, 605.556, 411.111, 631.482, 422.222, 643.21, 429.63, 650, 467.284, 648.766, 501.852, 639.506, 529.63, 617.901, 560.494, 591.358, 572.222, 569.136, 575.309, 546.914, 567.901, 521.605, 551.852, 503.086, 541.975, 485.185, 532.099, 463.58, 549.383, 437.037, 520.988, 417.901, 494.444, 391.975, 464.198, 370.37, 439.506, 352.469, 412.963, 338.889, 372.222, 341.975, 347.531, 353.704, 319.753, 430.328, 392.623, 490.164, 442.623, 578.688, 486.066)
@@ -735,8 +735,8 @@ offset = Vector2(0, 58)
 
 [node name="AvantBras" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/BrasDroitPolygones"]
 z_index = 3
-position = Vector2(-126.798, -219.912)
-rotation = -0.156167
+position = Vector2(-126.857, -219.965)
+rotation = -0.159245
 scale = Vector2(0.999997, 0.999997)
 offset = Vector2(-771, -522)
 texture = ExtResource("8_ryk6s")
@@ -748,7 +748,7 @@ internal_vertex_count = 2
 
 [node name="Main" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/BrasDroitPolygones"]
 z_index = 3
-position = Vector2(90.2389, -217.08)
+position = Vector2(90.1881, -217.801)
 rotation = -0.122171
 scale = Vector2(0.999997, 0.999997)
 offset = Vector2(-1180.77, -556.766)
@@ -785,10 +785,10 @@ position = Vector2(31, 19)
 
 [node name="Bras" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/BrasGauchePolygones"]
 z_index = 2
-position = Vector2(-302.193, -349.415)
-rotation = 0.0597583
-scale = Vector2(0.999995, 0.999995)
-offset = Vector2(-406, -381)
+position = Vector2(-302.229, -349.491)
+rotation = 0.0598882
+scale = Vector2(0.999996, 0.999996)
+offset = Vector2(-386, -384)
 texture = ExtResource("8_ryk6s")
 polygon = PackedVector2Array(371.605, 311.728, 400.617, 296.296, 433.333, 302.469, 469.753, 329.63, 498.148, 353.704, 527.161, 375.926, 552.469, 388.272, 583.951, 403.086, 605.556, 411.111, 631.482, 422.222, 643.21, 429.63, 650, 467.284, 648.766, 501.852, 639.506, 529.63, 617.901, 560.494, 591.358, 572.222, 569.136, 575.309, 546.914, 567.901, 521.605, 551.852, 503.086, 541.975, 485.185, 532.099, 463.58, 549.383, 437.037, 520.988, 417.901, 494.444, 391.975, 464.198, 370.37, 439.506, 352.469, 412.963, 338.889, 372.222, 341.975, 347.531, 353.704, 319.753, 430.328, 392.623, 490.164, 442.623, 578.688, 486.066)
 uv = PackedVector2Array(371.605, 311.728, 400.617, 296.296, 433.333, 302.469, 469.753, 329.63, 498.148, 353.704, 527.161, 375.926, 552.469, 388.272, 583.951, 403.086, 605.556, 411.111, 631.482, 422.222, 643.21, 429.63, 650, 467.284, 648.766, 501.852, 639.506, 529.63, 617.901, 560.494, 591.358, 572.222, 569.136, 575.309, 546.914, 567.901, 521.605, 551.852, 503.086, 541.975, 485.185, 532.099, 463.58, 549.383, 437.037, 520.988, 417.901, 494.444, 391.975, 464.198, 370.37, 439.506, 352.469, 412.963, 338.889, 372.222, 341.975, 347.531, 353.704, 319.753, 430.328, 392.623, 490.164, 442.623, 578.688, 486.066)
@@ -799,14 +799,14 @@ internal_vertex_count = 3
 [node name="MancheBras" type="Sprite2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/BrasGauchePolygones/Bras"]
 material = SubResource("ShaderMaterial_g2qlr")
 texture = ExtResource("9_0vyko")
-offset = Vector2(0, 48)
+offset = Vector2(20, 48)
 
 [node name="AvantBras" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/BrasGauchePolygones"]
 z_index = 3
-position = Vector2(-126.798, -219.912)
-rotation = -0.156167
+position = Vector2(-126.857, -219.965)
+rotation = -0.159245
 scale = Vector2(0.999997, 0.999997)
-offset = Vector2(-771, -537)
+offset = Vector2(-736, -540)
 texture = ExtResource("8_ryk6s")
 polygon = PackedVector2Array(708.696, 507.609, 743.478, 452.174, 786.956, 452.174, 861.956, 452.174, 938.044, 458.696, 990.217, 459.783, 1021.74, 465.217, 1023.91, 490.217, 1016.3, 554.348, 1008.7, 580.435, 984.783, 588.043, 939.13, 598.913, 863.044, 609.783, 796.739, 620.652, 730.435, 622.826, 698.913, 556.522, 804.478, 532.09, 931.343, 524.627)
 uv = PackedVector2Array(708.696, 507.609, 743.478, 452.174, 786.956, 452.174, 861.956, 452.174, 938.044, 458.696, 990.217, 459.783, 1021.74, 465.217, 1023.91, 490.217, 1016.3, 554.348, 1008.7, 580.435, 984.783, 588.043, 939.13, 598.913, 863.044, 609.783, 796.739, 620.652, 730.435, 622.826, 700, 558.696, 804.478, 532.09, 931.343, 524.627)
@@ -816,10 +816,10 @@ internal_vertex_count = 2
 
 [node name="Main" type="Polygon2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/BrasGauchePolygones"]
 z_index = 3
-position = Vector2(90.2389, -217.08)
+position = Vector2(90.1881, -217.801)
 rotation = 0.0802851
 scale = Vector2(0.999997, 0.999997)
-offset = Vector2(-1180.77, -571.766)
+offset = Vector2(-1155.77, -584.766)
 texture = ExtResource("25_bcglh")
 polygon = PackedVector2Array(1086.49, 504.505, 1143.24, 444.144, 1326.13, 459.459, 1304.5, 627.027, 1129.73, 622.523, 1212.61, 527.928)
 uv = PackedVector2Array(1086.49, 504.505, 1143.24, 444.144, 1326.13, 459.459, 1304.5, 627.027, 1129.73, 622.523, 1209.01, 523.423)
@@ -851,6 +851,7 @@ position = Vector2(-198.478, -385.093)
 rotation = 0.217021
 scale = Vector2(0.999996, 0.999996)
 rest = Transform2D(0.997502, 0.0706359, -0.0706359, 0.997502, -281.241, -391.362)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Bras" type="Bone2D" parent="ScooterRigidBody/SpriteChassis/Marcello/TorsoRigidBody2D2/Skeleton2D/Epaule"]
 position = Vector2(-37.1733, 24.0649)
